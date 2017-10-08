@@ -1,141 +1,153 @@
-function LinkedList() {
-    var length = 0;
-    var head = null;
-
-    var Node = function (element) {
-        this.element = element;
+class Node{
+    constructor(data){
+        this.data = data;
         this.next = null;
-    };
-
-    this.size = function () {
-        return length;
-    };
-
-    this.head = function () {
-        return head;
-    };
-
-    this.add = function (element) {
-        var node = new Node(element);
-        if (head === null) {
-            head = node;
-        } else {
-            var currentNode = head;
-
-            while (currentNode.next) {
-                currentNode = currentNode.next;
-            }
-
-            currentNode.next = node;
-        }
-
-        length++;
-    };
-
-    this.remove = function (element) {
-        var currentNode = head;
-        var previousNode;
-        if (currentNode.element === element) {
-            head = currentNode.next;
-        } else {
-            while (currentNode.element !== element) {
-                previousNode = currentNode;
-                currentNode = currentNode.next;
-            }
-
-            previousNode.next = currentNode.next;
-        }
-
-        length--;
-    };
-
-    this.isEmpty = function () {
-        return length === 0;
-    };
-
-    this.indexOf = function (element) {
-        var currentNode = head;
-        var index = -1;
-
-        while (currentNode) {
-            index++;
-            if (currentNode.element === element) {
-                return index;
-            }
-            currentNode = currentNode.next;
-        }
-
-        return -1;
-    };
-
-    this.elementAt = function (index) {
-        var currentNode = head;
-        var count = 0;
-        while (count < index) {
-            count++;
-            currentNode = currentNode.next
-        }
-        return currentNode.element;
-    };
-
-
-    this.addAt = function (index, element) {
-        var node = new Node(element);
-
-        var currentNode = head;
-        var previousNode;
-        var currentIndex = 0;
-
-        if (index > length) {
-            return false;
-        }
-
-        if (index === 0) {
-            node.next = currentNode;
-            head = node;
-        } else {
-            while (currentIndex < index) {
-                currentIndex++;
-                previousNode = currentNode;
-                currentNode = currentNode.next;
-            }
-            node.next = currentNode;
-            previousNode.next = node;
-        }
-        length++;
     }
-
-    this.removeAt = function (index) {
-        var currentNode = head;
-        var previousNode;
-        var currentIndex = 0;
-        if (index < 0 || index >= length) {
-            return null
-        }
-        if (index === 0) {
-            head = currentNode.next;
-        } else {
-            while (currentIndex < index) {
-                currentIndex++;
-                previousNode = currentNode;
-                currentNode = currentNode.next;
-            }
-            previousNode.next = currentNode.next
-        }
-        length--;
-        return currentNode.element;
-    }
-
 }
 
-var conga = new LinkedList();
-conga.add('Kitten');
-conga.add('Puppy');
-conga.add('Dog');
-conga.add('Cat');
-conga.add('Fish');
-console.log(conga.size());
-console.log(conga.removeAt(3));
-console.log(conga.elementAt(3));
-console.log(conga.indexOf('Puppy'));
-console.log(conga.size());
+class LinkedList{
+
+    constructor(){
+        this._head = null;
+        this.length = 0;
+    }
+
+    get size(){
+        return this.length;
+    }
+
+    get head(){
+        return this._head;
+    }
+
+    add(data){
+        let node = new Node(data)
+        if(this._head == null){
+            this._head = node;
+        }else{
+            let temp = this._head;
+
+            while(temp.next){
+                temp = temp.next;
+            }
+
+            temp.next = node;
+        }
+        this.length++;
+    }
+
+    remove(nodeData){
+        if(!this._head){
+            throw new Error("Empty list");
+        }
+        else{
+            let temp = this._head;
+            let prev;
+            if(temp.data == nodeData){
+                this._head = this._head.next;
+            }else{
+                while(temp.data != nodeData && temp.next != null){
+                    prev = temp;
+                    temp = temp.next;
+                }
+                prev.next = temp.next;
+            }
+            this.length--;
+        }
+    }
+
+    addAt(index, data){    
+        
+        if(index>this.length || index<0){
+            throw new Error("Index not fit in aactual list range");
+            return;
+        }
+        var node = new Node(data);
+        if(index == 0){
+            node.next = this._head;
+            this._head = node;
+        }else{
+            let count = 0;
+            let curr = this._head;
+            let prev;
+            while(count < index){
+                prev = curr;
+                curr = curr.next;
+                count++;                
+            }
+            node.next = curr;
+            prev.next = node;
+        }
+        this.length++;
+    }
+
+    removeAt(index){
+        if(index>=this.length || index<0){
+            throw new Error("Index not fit in aactual list range");
+            return;
+        }
+        if(index==0){
+            this._head = this._head.next;
+        }else{
+            let curr = this._head;
+            let prev;
+            let count = 0;
+            while(count<index){
+                prev = curr;
+                curr = curr.next;
+                count++;
+            }
+            prev.next = curr.next;
+        }
+        this.length--;
+    }
+
+    indexOf(nodeData){
+        let curr = this._head;
+        let index = 0;
+        while(curr.data != nodeData){
+            if(curr.next){
+                curr = curr.next
+                index++;
+            }
+            else{
+                return -1;
+            }
+        }
+        return index;
+    }
+
+    dataAt(index){
+        if(index<0 || index>=this.length){
+            return -1;
+        }
+        let count = 0;
+        let temp = this._head;
+        while(count < index){
+            temp = temp.next;
+            count++;
+        }
+        return temp.data;
+    }
+}
+
+var linked = new LinkedList();
+
+linked.add(10);
+linked.add(5);
+linked.add(3);
+
+linked.removeAt(2);
+
+console.log(linked.dataAt(3));
+
+console.log(linked);
+
+linked.addAt(2,2);
+
+console.log(linked);
+
+
+console.log(linked);
+
+console.log(linked.indexOf(15));
