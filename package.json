@@ -1,0 +1,22 @@
+{
+  "name": "javascript_datastructure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Binary Heap.js",
+  "scripts": {
+    "test": "jasmine JASMINE_CONFIG_PATH=./jasmine.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/assuncaocharles/javascript_DataStructure.git"
+  },
+  "author": "Charles Assunção",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/assuncaocharles/javascript_DataStructure/issues"
+  },
+  "homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
+  "dependencies": {
+    "jasmine": "^2.8.0"
+  }
+}
