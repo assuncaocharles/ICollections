@@ -132,24 +132,3 @@ class LinkedList{
 }
 
 module.exports = LinkedList;
-
-// var linked = new LinkedList();
-
-// linked.add(10);
-// linked.add(5);
-// linked.add(3);
-
-// linked.removeAt(2);
-
-// console.log(linked.dataAt(3));
-
-// console.log(linked);
-
-// linked.addAt(2,2);
-
-// console.log(linked);
-
-
-// console.log(linked);
-
-// console.log(linked.indexOf(15));
