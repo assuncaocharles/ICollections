@@ -38,41 +38,49 @@ console.log(q.front());
 q.print();
 
 
-function PriorityQueue() {
-    var collection = [];
-    this.printCollection = function () {
-        (console.log(collection));
-    };
-    this.enqueue = function (element) {
+class PriorityQueue{
+    constructor(){
+        this.collection = [];
+    }
+
+    printCollection(){
+        console.log(this.collection);
+    }
+
+    enqueue( element ){
         if (this.isEmpty()) {
-            collection.push(element);
+            this.collection.push(element);
         } else {
-            var added = false;
-            for (var i = 0; i < collection.length; i++) {
-                if (element[1] < collection[i][1]) { //checking priorities
-                    collection.splice(i, 0, element);
+            let added = false;
+            for (let i = 0; i < this.collection.length; i++) {
+                if (element[1] < this.collection[i][1]) { //checking priorities
+                    this.collection.splice(i, 0, element);
                     added = true;
                     break;
                 }
             }
             if (!added) {
-                collection.push(element);
+                this.collection.push(element);
             }
         }
-    };
-    this.dequeue = function () {
-        var value = collection.shift();
+    }
+
+    dequeue() {
+        const value = this.collection.shift();
         return value[0];
-    };
-    this.front = function () {
-        return collection[0];
-    };
-    this.size = function () {
-        return collection.length;
-    };
-    this.isEmpty = function () {
-        return (collection.length === 0);
-    };
+    }
+
+    front() {
+        return this.collection[0];
+    }
+
+    size() {
+        return this.collection.length;
+    }
+
+    isEmpty() {
+        return (this.collection.length === 0);
+    }
 }
 
 var pq = new PriorityQueue();
