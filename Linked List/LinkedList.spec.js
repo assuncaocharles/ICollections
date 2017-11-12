@@ -1,4 +1,4 @@
-LinkedList = require("./Linked List");
+LinkedList = require("./LinkedList");
 
 describe("Linked List", function () {
     it("Should init a new linked list", function () {
