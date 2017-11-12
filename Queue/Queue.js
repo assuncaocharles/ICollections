@@ -1,23 +1,31 @@
-function Queue() {
-    collection = [];
-    this.print = function () {
+class Queue{
+    constructor(){
+        this.collection = [];
+    }
+
+    print() {
         console.log(collection);
-    };
-    this.enqueue = function (element) {
+    }
+
+    enqueue(element) {
         collection.push(element);
-    };
-    this.dequeue = function () {
+    }
+
+    dequeue(){
         return collection.shift();
-    };
-    this.front = function () {
+    }
+
+    front() {
         return collection[0];
-    };
-    this.size = function () {
+    }
+
+    size(){
         return collection.length;
-    };
-    this.isEmpty = function () {
+    }
+
+    isEmpty() {
         return (collection.length === 0);
-    };
+    }
 }
 
 var q = new Queue();
