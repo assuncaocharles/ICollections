@@ -1,1 +1,5 @@
+#dependencies
 /node_modules
+
+#local test use
+*.html
