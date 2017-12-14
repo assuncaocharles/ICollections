@@ -1,4 +1,4 @@
-class Stack{
+export default class Stack{
 
     constructor(){
         this.count = 0;
@@ -30,4 +30,4 @@ class Stack{
 }
 
 
-module.exports = Stack;
+// module.exports = Stack;

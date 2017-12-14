@@ -1,5 +1,9 @@
 #dependencies
-/node_modules
+/node_modules/
 
 #local test use
-*.html
+test.js
+
+
+#production
+/dist/

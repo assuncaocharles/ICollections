@@ -5,7 +5,7 @@ class Node{
     }
 }
 
-class LinkedList{
+export default class LinkedList{
 
     constructor(){
         this._head = null;
@@ -130,5 +130,3 @@ class LinkedList{
         return temp.data;
     }
 }
-
-module.exports = LinkedList;
