@@ -6,4 +6,4 @@ test.js
 
 
 #production
-/dist/
+/lib/

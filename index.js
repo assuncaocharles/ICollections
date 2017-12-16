@@ -1,3 +1,1 @@
-import LinkedList from './Linked List/LinkedList';
-
-console.log(LinkedList);
+export { LinkedList } from './Linked List/LinkedList';
