@@ -6,10 +6,12 @@ class Node {
     }
 }
 
-class BST {
+export class BST {
+    
     constructor() {
         this.root = null;
     }
+
     add(data) {
         const node = this.root;
         if (node === null) {
@@ -38,6 +40,7 @@ class BST {
             return searchTree(node);
         }
     }
+
     findMin() {
         let current = this.root;
         while (current.left !== null) {
@@ -45,6 +48,7 @@ class BST {
         }
         return current.data;
     }
+
     findMax() {
         let current = this.root;
         while (current.right !== null) {
@@ -52,6 +56,7 @@ class BST {
         }
         return current.data;
     }
+
     find(data) {
         let current = this.root;
         while (current.data !== data) {
@@ -66,6 +71,7 @@ class BST {
         }
         return current;
     }
+
     isPresent(data) {
         let current = this.root;
         while (current) {
@@ -80,6 +86,7 @@ class BST {
         }
         return false;
     }
+
     remove(data) {
         const removeNode = function (node, data) {
             if (node == null) {
@@ -116,9 +123,11 @@ class BST {
         }
         this.root = removeNode(this.root, data);
     }
+
     isBalanced() {
         return (this.findMinHeight() >= this.findMaxHeight() - 1)
     }
+
     findMinHeight(node = this.root) {
         if (node == null) {
             return -1;
@@ -131,6 +140,7 @@ class BST {
             return right + 1;
         };
     }
+
     findMaxHeight(node = this.root) {
         if (node == null) {
             return -1;
@@ -143,6 +153,7 @@ class BST {
             return right + 1;
         };
     }
+
     inOrder() {
         if (this.root == null) {
             return null;
@@ -157,6 +168,7 @@ class BST {
             return result;
         };
     }
+
     preOrder() {
         if (this.root == null) {
             return null;
@@ -171,6 +183,7 @@ class BST {
             return result;
         };
     }
+
     postOrder() {
         if (this.root == null) {
             return null;
@@ -204,31 +217,6 @@ class BST {
             return result;
         } else {
             return null;
-        };
-    };
+        }
+    }
 }
-
-const bst = new BST();
-
-bst.add(9);
-bst.add(4);
-bst.add(17);
-bst.add(3);
-bst.add(6);
-bst.add(22);
-bst.add(5);
-bst.add(7);
-bst.add(20);
-
-console.log(bst.findMinHeight());
-console.log(bst.findMaxHeight());
-console.log(bst.isBalanced());
-bst.add(10);
-console.log(bst.findMinHeight());
-console.log(bst.findMaxHeight());
-console.log(bst.isBalanced());
-console.log('inOrder: ' + bst.inOrder());
-console.log('preOrder: ' + bst.preOrder());
-console.log('postOrder: ' + bst.postOrder());
-
-console.log('levelOrder: ' + bst.levelOrder());

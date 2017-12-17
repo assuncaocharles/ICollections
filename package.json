@@ -5,7 +5,8 @@
   "main": "lib/bundle.js",
   "scripts": {
     "test": "jasmine JASMINE_CONFIG_PATH=./jasmine.json",
-    "prepublish": "webpack"
+    "prepublish": "webpack",
+    "test:karma": "karma start ./karma.config.js"
   },
   "repository": {
     "type": "git",
@@ -21,10 +22,27 @@
     "jasmine": "^2.8.0"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2",
+    "fs": "0.0.1-security",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-babel-preprocessor": "^7.0.0",
+    "karma-browserify": "^4.2.1",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-mocha": "^0.2.0",
+    "karma-nyan-reporter": "0.0.60",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-webpack": "^2.0.9",
+    "rimraf": "^2.4.0",
+    "sinon": "^4.1.3",
     "webpack": "^3.10.0"
   }
 }

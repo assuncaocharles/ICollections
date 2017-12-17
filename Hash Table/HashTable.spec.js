@@ -1,4 +1,4 @@
-HashTable = require("./HashTable");
+import { HashTable } from './HashTable';
 
 describe("Hash Table", function () {
     

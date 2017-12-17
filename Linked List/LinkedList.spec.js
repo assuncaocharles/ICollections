@@ -1,8 +1,10 @@
-LinkedList = require("./LinkedList");
+
+
+import { LinkedList } from './LinkedList';
 
 describe("Linked List", function () {
     it("Should init a new linked list", function () {
-        let list = new LinkedList();
+        var list = new LinkedList();
         expect(list).not.toBeNull();
         expect(list.length).toBe(0);
     });

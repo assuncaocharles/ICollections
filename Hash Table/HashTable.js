@@ -1,4 +1,4 @@
-class HashTable{
+export class HashTable{
 
     constructor(){
         this.storage = [];
@@ -63,17 +63,3 @@ class HashTable{
         return hash % max;
     }
 }
-
-
-module.exports = HashTable;
-
-
-let ht = new HashTable();
-
-console.log(ht.hash('quincy', 10))
-ht.add('beau', 'person');
-ht.add('fido', 'dog');
-ht.add('rex', 'dinosour');
-ht.add('tux', 'penguin')
-console.log(ht.lookup('tux'))
-ht.log();
