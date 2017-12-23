@@ -3,3 +3,4 @@ export { BST } from './Binary Search Tree/Binary Search Tree';
 export { HashTable } from './Hash Table/HashTable';
 export { Stack } from './Stack/Stack';
 export { Set } from './Set/Set';
+export { Map } from './Maps/Maps';
