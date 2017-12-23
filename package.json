@@ -16,6 +16,22 @@
   "bugs": {
     "url": "https://github.com/assuncaocharles/javascript_DataStructure/issues"
   },
+  "keywords": [
+    "data structures",
+    "collections",
+    "generic",
+    "stack",
+    "linked",
+    "linked list",
+    "map",
+    "queue",
+    "tree",
+    "binary tree",
+    "priority queue",
+    "set",
+    "hash",
+    "hash table"
+  ],
   "homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
   "dependencies": {
     "jasmine": "^2.8.0"
