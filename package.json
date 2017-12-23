@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jasmine JASMINE_CONFIG_PATH=./jasmine.json",
     "prepublish": "webpack",
-    "test:karma": "karma start ./karma.config.js"
+    "test:karma": "karma start ./karma.conf.js"
   },
   "repository": {
     "type": "git",
