@@ -4,9 +4,8 @@
   "description": "",
   "main": "lib/bundle.js",
   "scripts": {
-    "test": "jasmine JASMINE_CONFIG_PATH=./jasmine.json",
     "prepublish": "webpack",
-    "test:karma": "karma start ./karma.conf.js"
+    "test": "karma start ./karma.conf.js"
   },
   "repository": {
     "type": "git",
