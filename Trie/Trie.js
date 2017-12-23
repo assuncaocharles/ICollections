@@ -1,19 +1,26 @@
-let Node = function () {
-	this.keys = new Map();
-	this.end = false;
-	this.setEnd = function () {
+class Node {
+	constructor() {
+		this.keys = new Map();
+		this.end = false;
+	}
+
+	setEnd() {
 		this.end = true;
-	};
-	this.isEnd = function () {
+	}
+
+	isEnd() {
 		return this.end;
-	};
+	}
 };
 
-let Trie = function () {
+export class Trie{
 
-	this.root = new Node();
+	constructor(){
+		this.root = new Node();
+	}
+	
 
-	this.add = function (input, node = this.root) {
+	add(input, node = this.root) {
 		if (input.length == 0) {
 			node.setEnd();
 			return;
@@ -25,7 +32,7 @@ let Trie = function () {
 		};
 	};
 
-	this.isWord = function (word) {
+	isWord(word) {
 		let node = this.root;
 		while (word.length > 1) {
 			if (!node.keys.has(word[0])) {
@@ -39,7 +46,7 @@ let Trie = function () {
 			true : false;
 	};
 
-	this.print = function () {
+	print() {
 		let words = new Array();
 		let search = function (node, string) {
 			if (node.keys.size != 0) {
@@ -59,17 +66,3 @@ let Trie = function () {
 	};
 
 };
-
-myTrie = new Trie()
-myTrie.add('ball');
-myTrie.add('bat');
-myTrie.add('doll');
-myTrie.add('dork');
-myTrie.add('do');
-myTrie.add('dorm')
-myTrie.add('send')
-myTrie.add('sense')
-console.log(myTrie.isWord('doll'))
-console.log(myTrie.isWord('dor'))
-console.log(myTrie.isWord('dorf'))
-console.log(myTrie.print())
