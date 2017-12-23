@@ -3,7 +3,7 @@ import { HashTable } from './HashTable';
 describe("Hash Table", function () {
     
     it("Should init a new hash table", function () {
-        let hashTable = new HashTable();
+        let hashTable = new HashTable(14);
         expect(hashTable).not.toBeNull();
         expect(hashTable.storageLimit).toBe(14);
     });

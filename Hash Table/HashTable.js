@@ -1,8 +1,8 @@
 export class HashTable{
 
-    constructor(){
+    constructor(limit){
         this.storage = [];
-        this.storageLimit = 14;
+        this.storageLimit = limit;
     }
 
     log(){

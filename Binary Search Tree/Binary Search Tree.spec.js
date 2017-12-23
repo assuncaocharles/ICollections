@@ -62,7 +62,10 @@ describe("Binary Search Tree", function () {
         bst.add(5); 
         bst.add(13);
         bst.add(2); 
-        expect(bst.inOrder()).toEqual([2,5,10,13]);
+        bst.add(133);
+        bst.add(42);
+        bst.add(12);        
+        expect(bst.inOrder()).toEqual([2,5,10,12,13,42,133]);
     });
 
     it("Should return data in pre order", function () {
@@ -70,7 +73,11 @@ describe("Binary Search Tree", function () {
         bst.add(10);
         bst.add(5); 
         bst.add(13);
-        expect(bst.preOrder()).toEqual([10, 5, 13]);
+        bst.add(2); 
+        bst.add(133);
+        bst.add(42);
+        bst.add(12);      
+        expect(bst.preOrder()).toEqual([10,5,2,13,12,133,42]);
     });
 
     it("Should return data in post order", function () {
@@ -78,7 +85,11 @@ describe("Binary Search Tree", function () {
         bst.add(10);
         bst.add(5); 
         bst.add(13);
-        expect(bst.postOrder()).toEqual([5, 13, 10]);
+        bst.add(2); 
+        bst.add(133);
+        bst.add(42);
+        bst.add(12);   
+        expect(bst.postOrder()).toEqual([2,5,12,42,133,13,10]);
     });
     
 })

@@ -6,7 +6,7 @@ describe("Linked List", function () {
     it("Should init a new linked list", function () {
         var list = new LinkedList();
         expect(list).not.toBeNull();
-        expect(list.length).toBe(0);
+        expect(list.size).toBe(0);
     });
 
     it("Should add new nodes", function () {
@@ -14,7 +14,7 @@ describe("Linked List", function () {
         linked.add(10);
         linked.add(5);
         linked.add(3);
-        expect(linked.length).toBe(3);
+        expect(linked.size).toBe(3);
     });
 
     it("Should add new node in a specific index", function () {
