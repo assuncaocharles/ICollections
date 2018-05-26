@@ -1,63 +1,63 @@
 {
-  "name": "icollections",
-  "version": "1.0.8",
-  "description": "",
-  "main": "lib/bundle.js",
-  "scripts": {
-    "prepublish": "webpack",
-    "test": "karma start ./karma.conf.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/assuncaocharles/javascript_DataStructure.git"
-  },
-  "author": "Charles Assunção",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/assuncaocharles/javascript_DataStructure/issues"
-  },
-  "keywords": [
-    "data structures",
-    "collections",
-    "generic",
-    "stack",
-    "linked",
-    "linked list",
-    "map",
-    "queue",
-    "tree",
-    "binary tree",
-    "priority queue",
-    "set",
-    "hash",
-    "hash table"
-  ],
-  "homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
-  "dependencies": {
-    "jasmine": "^2.8.0"
-  },
-  "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015": "^6.24.1",
-    "chai": "^4.1.2",
-    "fs": "0.0.1-security",
-    "jasmine-core": "^2.8.0",
-    "karma": "^1.7.1",
-    "karma-babel-preprocessor": "^7.0.0",
-    "karma-browserify": "^4.2.1",
-    "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-jasmine": "^1.1.1",
-    "karma-mocha": "^0.2.0",
-    "karma-nyan-reporter": "0.0.60",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-webpack": "^2.0.9",
-    "rimraf": "^2.4.0",
-    "sinon": "^4.1.3",
-    "webpack": "^3.10.0"
-  }
+	"name": "icollections",
+	"version": "1.0.9",
+	"description": "",
+	"main": "lib/bundle.js",
+	"scripts": {
+		"prepublish": "webpack",
+		"test": "karma start ./karma.conf.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/assuncaocharles/javascript_DataStructure.git"
+	},
+	"author": "Charles Assunção",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/assuncaocharles/javascript_DataStructure/issues"
+	},
+	"keywords": [
+		"data structures",
+		"collections",
+		"generic",
+		"stack",
+		"linked",
+		"linked list",
+		"map",
+		"queue",
+		"tree",
+		"binary tree",
+		"priority queue",
+		"set",
+		"hash",
+		"hash table"
+	],
+	"homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
+	"dependencies": {
+		"jasmine": "^2.8.0"
+	},
+	"devDependencies": {
+		"babel": "^6.23.0",
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-es2015": "^6.24.1",
+		"chai": "^4.1.2",
+		"fs": "0.0.1-security",
+		"jasmine-core": "^2.8.0",
+		"karma": "^1.7.1",
+		"karma-babel-preprocessor": "^7.0.0",
+		"karma-browserify": "^4.2.1",
+		"karma-chai": "^0.1.0",
+		"karma-chrome-launcher": "^2.2.0",
+		"karma-jasmine": "^1.1.1",
+		"karma-mocha": "^0.2.0",
+		"karma-nyan-reporter": "0.0.60",
+		"karma-phantomjs-launcher": "^1.0.4",
+		"karma-webpack": "^2.0.9",
+		"rimraf": "^2.4.0",
+		"sinon": "^4.1.3",
+		"webpack": "^3.10.0"
+	}
 }
