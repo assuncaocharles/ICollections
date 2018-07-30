@@ -2,6 +2,8 @@
 
 # ICollections
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/javascript_DataStructure.svg)](https://greenkeeper.io/)
+
 > “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.” — Linus Torvalds
 
 This project has javascript implementation for some comum data structures like:
