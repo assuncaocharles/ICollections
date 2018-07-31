@@ -1,4 +1,4 @@
-![Data Structures](https://raw.githubusercontent.com/assuncaocharles/javascript_DataStructure/master/logo.png 'Data Structures')
+![Data Structures](https://raw.githubusercontent.com/assuncaocharles/javascript_DataStructure/master/logo.png 'Data Structures') [![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/)
 
 # ICollections
 
