@@ -1,8 +1,8 @@
-![Data Structures](https://raw.githubusercontent.com/assuncaocharles/javascript_DataStructure/master/logo.png 'Data Structures') [![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/)
+![Data Structures](https://raw.githubusercontent.com/assuncaocharles/javascript_DataStructure/master/logo.png 'Data Structures') 
 
 # ICollections
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/javascript_DataStructure.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/javascript_DataStructure.svg)](https://greenkeeper.io/) [![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/)
 
 > “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.” — Linus Torvalds
 
