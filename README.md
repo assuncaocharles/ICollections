@@ -43,7 +43,7 @@ console.log(bst.isBalanced()); // false
 Your actual tree state:
 
 ```
-	10
+    10
    /
   5
 ```
