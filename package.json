@@ -4,8 +4,8 @@
 	"description": "",
 	"main": "lib/index.js",
 	"scripts": {
-		"prepublish": "npm run compile",
-		"compile": "rm -R lib && babel src -d lib",
+		"prepare": "npm version  patch && npm run compile:lib",
+		"compile:lib": "rm -rf lib && babel src -d lib",
 		"test": "karma start ./karma.conf.js",
 		"build": "babel ./ --presets babel-preset-es2015 --out-dir distribution"
 	},
@@ -37,10 +37,9 @@
 	"homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
 	"dependencies": {
 		"babel-runtime": "^6.26.0",
-		"jasmine": "^3.1.0"
+		"npm": "^6.2.0"
 	},
 	"devDependencies": {
-		"babel": "^6.23.0",
 		"babel-cli": "^6.26.0",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.4",
@@ -50,6 +49,7 @@
 		"babel-preset-es2015": "^6.24.1",
 		"chai": "^4.1.2",
 		"fs": "0.0.2",
+		"jasmine": "^3.1.0",
 		"jasmine-core": "^3.1.0",
 		"karma": "^2.0.5",
 		"karma-babel-preprocessor": "^7.0.0",

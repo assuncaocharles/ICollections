@@ -7,3 +7,6 @@ test.js
 
 #production
 /lib/
+
+#system files
+.DS_STORE
