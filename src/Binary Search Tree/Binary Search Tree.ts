@@ -237,7 +237,3 @@ export class BST<T> {
 		}
 	}
 }
-
-var bst = new BST<number>();
-bst.add(10);
-console.log(bst);
