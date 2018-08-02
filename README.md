@@ -1,21 +1,21 @@
-![Data Structures](https://raw.githubusercontent.com/assuncaocharles/javascript_DataStructure/master/logo.png 'Data Structures') 
+![Data Structures](https://raw.githubusercontent.com/assuncaocharles/javascript_DataStructure/master/logo.png 'Data Structures')
 
 # ICollections
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/javascript_DataStructure.svg)](https://greenkeeper.io/) [![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/javascript_DataStructure.svg)](https://greenkeeper.io/) [![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/) [![Build Status](https://travis-ci.com/assuncaocharles/ICollections.svg?branch=master)](https://travis-ci.com/assuncaocharles/ICollections)
 
 > “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.” — Linus Torvalds
 
 This project has javascript implementation for some comum data structures like:
 
-*   Linked List
-*   Queue
-*   Priority Queue
-*   Stack
-*   Maps
-*   Hash Table
-*   Binary Search Tree
-*   Set
+-   Linked List
+-   Queue
+-   Priority Queue
+-   Stack
+-   Maps
+-   Hash Table
+-   Binary Search Tree
+-   Set
 
 ## Install
 
@@ -345,5 +345,5 @@ npm run test
 
 ### To do
 
-*   Graph
-*   Binary Heap
+-   Graph
+-   Binary Heap
