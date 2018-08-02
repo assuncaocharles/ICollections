@@ -6,7 +6,7 @@
 	"scripts": {
 		"prepare": "npm run build",
 		"test": "karma start ./karma.conf.js",
-		"typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./dev/src/",
+		"typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/",
 		"build": "webpack --config webpack.config.js"
 	},
 	"repository": {
