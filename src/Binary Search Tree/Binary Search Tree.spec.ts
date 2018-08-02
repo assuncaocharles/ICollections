@@ -1,13 +1,17 @@
 import { BST } from './Binary Search Tree';
 
 describe('Binary Search Tree', function() {
+	let bst: BST<number>;
+
+	beforeEach(() => {
+		bst = new BST<number>();
+	});
+
 	it('Should init a new BST', function() {
-		let bst = new BST();
 		expect(bst).toBeDefined();
 	});
 
 	it('Should add new nodes', function() {
-		let bst = new BST();
 		bst.add(10);
 		bst.add(5);
 		expect(bst.isPresent(5)).toBe(true);
@@ -15,7 +19,6 @@ describe('Binary Search Tree', function() {
 	});
 
 	it('Should remove a node', function() {
-		let bst = new BST();
 		bst.add(10);
 		bst.add(5);
 		bst.add(13);
@@ -25,7 +28,6 @@ describe('Binary Search Tree', function() {
 	});
 
 	it('Should find the min value', function() {
-		let bst = new BST();
 		bst.add(10);
 		bst.add(5);
 		bst.add(13);
@@ -36,18 +38,17 @@ describe('Binary Search Tree', function() {
 	});
 
 	it('Should find the max value', function() {
-		let bst = new BST();
 		bst.add(10);
 		bst.add(5);
 		bst.add(13);
 		bst.add(2);
 		bst.add(133);
 		bst.add(42);
+		console.log(bst);
 		expect(bst.findMax()).toBe(133);
 	});
 
 	it('Should determine if is balanced', function() {
-		let bst = new BST();
 		bst.add(10);
 		bst.add(5);
 		bst.add(13);
@@ -56,7 +57,6 @@ describe('Binary Search Tree', function() {
 	});
 
 	it('Should return data in order', function() {
-		let bst = new BST();
 		bst.add(10);
 		bst.add(5);
 		bst.add(13);
@@ -68,7 +68,6 @@ describe('Binary Search Tree', function() {
 	});
 
 	it('Should return data in pre order', function() {
-		let bst = new BST();
 		bst.add(10);
 		bst.add(5);
 		bst.add(13);
@@ -80,7 +79,6 @@ describe('Binary Search Tree', function() {
 	});
 
 	it('Should return data in post order', function() {
-		let bst = new BST();
 		bst.add(10);
 		bst.add(5);
 		bst.add(13);
@@ -92,7 +90,6 @@ describe('Binary Search Tree', function() {
 	});
 
 	it('Should return data by layer', function() {
-		let bst = new BST();
 		bst.add(10);
 		bst.add(5);
 		bst.add(13);
