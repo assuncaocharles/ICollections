@@ -2,7 +2,7 @@
 
 # ICollections
 
-[![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/) [![Build Status](https://travis-ci.com/assuncaocharles/ICollections.svg?branch=master)](https://travis-ci.com/assuncaocharles/ICollections)
+[![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/) [![Build Status](https://travis-ci.com/assuncaocharles/ICollections.svg?branch=master)](https://travis-ci.com/assuncaocharles/ICollections) [![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/ICollections.svg)](https://greenkeeper.io/)
 
 > “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.” — Linus Torvalds
 
