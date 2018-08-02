@@ -1,5 +1,5 @@
+.gitignore
 .prettierrc
-jasmine.json
 karma.conf.js
 logo.png
 README.md
