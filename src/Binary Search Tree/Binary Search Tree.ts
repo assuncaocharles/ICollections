@@ -1,4 +1,4 @@
-class Node<T> {
+export class Node<T> {
 	constructor(public data: T, public left: Node<T> = null, public right: Node<T> = null) {
 		this.data = data;
 		this.left = left;
