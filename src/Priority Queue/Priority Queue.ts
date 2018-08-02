@@ -1,46 +1,42 @@
+export class PriorityQueue<T> {
+	constructor(public collection: Array<Array<T | number>> = []) {}
 
-export class PriorityQueue{
+	printCollection(): void {
+		console.log(this.collection);
+	}
 
-    constructor(){
-        this.collection = [];
-    }
+	enqueue(element: Array<T | number>): void {
+		if (this.isEmpty()) {
+			this.collection.push(element);
+		} else {
+			let added = false;
+			for (let i = 0; i < this.collection.length; i++) {
+				if (element[1] < this.collection[i][1]) {
+					this.collection.splice(i, 0, element);
+					added = true;
+					break;
+				}
+			}
+			if (!added) {
+				this.collection.push(element);
+			}
+		}
+	}
 
-    printCollection(){
-        console.log(this.collection);
-    }
+	dequeue(): T | number {
+		const value = this.collection.shift();
+		return value[0];
+	}
 
-    enqueue( element ){
-        if (this.isEmpty()) {
-            this.collection.push(element);
-        } else {
-            let added = false;
-            for (let i = 0; i < this.collection.length; i++) {
-                if (element[1] < this.collection[i][1]) { //checking priorities
-                    this.collection.splice(i, 0, element);
-                    added = true;
-                    break;
-                }
-            }
-            if (!added) {
-                this.collection.push(element);
-            }
-        }
-    }
+	get front(): Array<T | number> {
+		return this.collection[0];
+	}
 
-    dequeue() {
-        const value = this.collection.shift();
-        return value[0];
-    }
+	get size(): number {
+		return this.collection.length;
+	}
 
-    get front() {
-        return this.collection[0];
-    }
-
-    get size() {
-        return this.collection.length;
-    }
-
-    isEmpty() {
-        return (this.collection.length === 0);
-    }
+	isEmpty(): boolean {
+		return this.collection.length === 0;
+	}
 }

@@ -5,10 +5,24 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "Launch Chrome",
+			"url": "http://localhost:8080",
+			"webRoot": "${workspaceFolder}"
+		},
+		{
+			"type": "chrome",
+			"request": "attach",
+			"name": "Attach to Chrome",
+			"port": 9876,
+			"webRoot": "${workspaceFolder}"
+		},
+		{
 			"type": "node",
 			"request": "launch",
 			"name": "Launch Program",
-			"program": "${workspaceFolder}/Binary Search Tree/Binary Search Tree.js"
+			"program": "${workspaceFolder}/src/Binary Search Tree/Binary Search Tree.js"
 		}
 	]
 }

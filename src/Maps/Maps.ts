@@ -1,45 +1,40 @@
-export class Map {
+export class Map<T> {
+	constructor(public collection: { [key: string]: T } = {}, public count: number = 0) {}
 
-	constructor() {
-		this.collection = {};
-		this.count = 0;
-	}
-	
-	get size() {
+	get size(): number {
 		return this.count;
 	}
 
-	set(key, value) {
+	set(key: any, value: T): void {
 		this.collection[key] = value;
 		this.count++;
 	}
 
-	has(key) {
-		return (key in this.collection);
+	has(key: any): boolean {
+		return key in this.collection;
 	}
 
-	get(key) {
-		return (key in this.collection) ? this.collection[key] : null;
+	get(key: any): T {
+		return key in this.collection ? this.collection[key] : null;
 	}
 
-	delete(key) {
+	delete(key: any): void {
 		if (key in this.collection) {
 			delete this.collection[key];
 			this.count--;
 		}
 	}
 
-	get values() {
+	get values(): Array<T> {
 		let result = new Array();
 		for (let key of Object.keys(this.collection)) {
 			result.push(this.collection[key]);
-		};
-		return (result.length > 0) ? result : null;
+		}
+		return result.length > 0 ? result : null;
 	}
 
-	clear(){
+	clear(): void {
 		this.collection = {};
 		this.count = 0;
 	}
-
-};
+}

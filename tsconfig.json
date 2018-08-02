@@ -1,0 +1,18 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"target": "es5",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"stripInternal": true,
+		"strictNullChecks": false,
+		"skipLibCheck": true,
+		"noImplicitAny": true,
+		"outDir": "./lib",
+		"declaration": false,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"typeRoots": ["node_modules/@types"],
+		"lib": ["es2017", "dom"]
+	}
+}

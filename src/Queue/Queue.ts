@@ -1,30 +1,27 @@
-export class Queue{
-    constructor(){
-        this.collection = [];
-    }
+export class Queue<T> {
+	constructor(public collection: Array<T> = []) {}
 
-    print() {
-        console.log(collection);
-    }
+	print(): void {
+		console.log(this.collection);
+	}
 
-    enqueue(element) {
-        this.collection.push(element);
-    }
+	enqueue(element: T) {
+		this.collection.push(element);
+	}
 
-    dequeue(){
-        return this.collection.shift();
-    }
+	dequeue(): T {
+		return this.collection.shift();
+	}
 
-    get front(){
-        return this.collection[0];
-    }
+	get front(): T {
+		return this.collection[0];
+	}
 
-    get size(){
-        return this.collection.length;
-    }
+	get size(): number {
+		return this.collection.length;
+	}
 
-    get isEmpty(){
-        return (this.collection.length === 0);
-    }
+	get isEmpty(): boolean {
+		return this.collection.length === 0;
+	}
 }
-

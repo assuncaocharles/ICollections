@@ -1,23 +1,19 @@
-class Node {
-	constructor(data, left = null, right = null) {
+class Node<T> {
+	constructor(public data: T, public left: Node<T> = null, public right: Node<T> = null) {
 		this.data = data;
 		this.left = left;
 		this.right = right;
 	}
 }
 
-export class BST {
-	constructor() {
-		this.root = null;
-	}
-
-	add(data) {
-		const node = this.root;
-		if (node === null) {
+export class BST<T> {
+	constructor(private root: Node<T> = null) {}
+	add(data: T): void {
+		if (this.root === null) {
 			this.root = new Node(data);
 			return;
 		} else {
-			const searchTree = function(node) {
+			const searchTree = (node: Node<T>): any => {
 				if (data < node.data) {
 					if (node.left === null) {
 						node.left = new Node(data);
@@ -36,19 +32,19 @@ export class BST {
 					return null;
 				}
 			};
-			return searchTree(node);
+			return searchTree(this.root);
 		}
 	}
 
-	findMin() {
-		let current = this.root;
+	findMin(): T {
+		let current: Node<T> = this.root;
 		while (current.left !== null) {
 			current = current.left;
 		}
 		return current.data;
 	}
 
-	findMax() {
+	findMax(): T {
 		let current = this.root;
 		while (current.right !== null) {
 			current = current.right;
@@ -56,8 +52,8 @@ export class BST {
 		return current.data;
 	}
 
-	find(data) {
-		let current = this.root;
+	find(data: T): Node<T> {
+		let current: Node<T> = this.root;
 		while (current.data !== data) {
 			if (data < current.data) {
 				current = current.left;
@@ -71,7 +67,7 @@ export class BST {
 		return current;
 	}
 
-	isPresent(data) {
+	isPresent(data: T): boolean {
 		let current = this.root;
 		while (current) {
 			if (data === current.data) {
@@ -86,8 +82,8 @@ export class BST {
 		return false;
 	}
 
-	remove(data) {
-		const removeNode = function(node, data) {
+	remove(data: T): void {
+		const removeNode = (node: Node<T>, data: T) => {
 			if (node == null) {
 				return null;
 			}
@@ -123,11 +119,11 @@ export class BST {
 		this.root = removeNode(this.root, data);
 	}
 
-	isBalanced() {
+	isBalanced(): boolean {
 		return this.findMinHeight() >= this.findMaxHeight() - 1;
 	}
 
-	findMinHeight(node = this.root) {
+	findMinHeight(node: Node<T> = this.root): number {
 		if (node == null) {
 			return -1;
 		}
@@ -140,7 +136,7 @@ export class BST {
 		}
 	}
 
-	findMaxHeight(node = this.root) {
+	findMaxHeight(node: Node<T> = this.root): number {
 		if (node == null) {
 			return -1;
 		}
@@ -153,52 +149,52 @@ export class BST {
 		}
 	}
 
-	inOrder() {
+	inOrder(): Array<T> {
 		if (this.root == null) {
 			return null;
 		} else {
 			var result = new Array();
-			function traverseInOrder(node) {
+			const traverseInOrder = (node: Node<T>): any => {
 				node.left && traverseInOrder(node.left);
 				result.push(node.data);
 				node.right && traverseInOrder(node.right);
-			}
+			};
 			traverseInOrder(this.root);
 			return result;
 		}
 	}
 
-	preOrder() {
+	preOrder(): Array<T> {
 		if (this.root == null) {
 			return null;
 		} else {
 			var result = new Array();
-			function traversePreOrder(node) {
+			const traversePreOrder = (node: Node<T>): any => {
 				result.push(node.data);
 				node.left && traversePreOrder(node.left);
 				node.right && traversePreOrder(node.right);
-			}
+			};
 			traversePreOrder(this.root);
 			return result;
 		}
 	}
 
-	postOrder() {
+	postOrder(): Array<T> {
 		if (this.root == null) {
 			return null;
 		} else {
 			var result = new Array();
-			function traversePostOrder(node) {
+			const traversePostOrder = (node: Node<T>): any => {
 				node.left && traversePostOrder(node.left);
 				node.right && traversePostOrder(node.right);
 				result.push(node.data);
-			}
+			};
 			traversePostOrder(this.root);
 			return result;
 		}
 	}
 
-	levelOrder() {
+	levelOrder(): Array<T> {
 		let result = [];
 		let Q = [];
 		if (this.root != null) {
@@ -219,7 +215,7 @@ export class BST {
 		}
 	}
 
-	layers() {
+	layers(): Array<T> {
 		if (this.root == null) {
 			return null;
 		} else {
@@ -241,3 +237,7 @@ export class BST {
 		}
 	}
 }
+
+var bst = new BST<number>();
+bst.add(10);
+console.log(bst);

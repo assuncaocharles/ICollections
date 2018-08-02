@@ -1,33 +1,26 @@
-export class Stack{
+export class Stack<T> {
+	constructor(public count: number = 0, public storage: { [key: number]: T } = {}) {}
 
-    constructor(){
-        this.count = 0;
-        this.storage = {};
-    }
+	push(val: T) {
+		this.storage[this.count] = val;
+		this.count++;
+	}
 
-    push(val){
-        this.storage[this.count] = val;
-        this.count++;
-    }
+	pop(): T {
+		if (this.count === 0) {
+			return undefined;
+		}
+		this.count--;
+		var result = this.storage[this.count];
+		delete this.storage[this.count];
+		return result;
+	}
 
-    pop(){
-        if (this.count === 0) {
-            return undefined;
-        }
-        this.count--;
-        var result = this.storage[this.count];
-        delete this.storage[this.count];
-        return result;
-    }
+	get size(): number {
+		return this.count;
+	}
 
-    get size(){
-        return this.count;
-    }
-
-    get peek() {
-        return this.storage[this.count - 1];
-    }
+	get peek(): T {
+		return this.storage[this.count - 1];
+	}
 }
-
-
-// module.exports = Stack;
