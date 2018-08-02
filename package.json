@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "lib/index.js",
 	"scripts": {
-		"prepare": "",
+		"prepare": "webpack --config webpack.config.js",
 		"test": "karma start ./karma.conf.js"
 	},
 	"repository": {
