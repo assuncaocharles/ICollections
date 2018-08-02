@@ -4,8 +4,9 @@
 	"description": "",
 	"main": "lib/index.js",
 	"scripts": {
-		"prepare": "webpack --config webpack.config.js",
-		"test": "karma start ./karma.conf.js"
+		"prepare": "npm run build",
+		"test": "karma start ./karma.conf.js",
+		"build": "webpack --config webpack.config.js"
 	},
 	"repository": {
 		"type": "git",
