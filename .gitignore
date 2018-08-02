@@ -10,3 +10,6 @@ test.js
 
 #system files
 .DS_STORE
+
+#test
+coverage/

@@ -1,12 +1,15 @@
 language: nodejs
 before_script:
+- npm install codecov -g
 - npm install
+- npm run test
 - npm run build
 script:
 - npm run build
 after_success:
 - npm run typedoc
 - npm pack
+- codecov -t "$CODECOV"
 deploy:
 - provider: pages
   skip_cleanup: true

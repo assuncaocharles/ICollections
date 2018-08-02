@@ -5,7 +5,7 @@ module.exports = function(config) {
 		files: ['**/*.spec.ts'],
 		exclude: ['./node_modules/'],
 		preprocessors: {
-			'**/*.spec.ts': ['webpack']
+			'**/*.spec.ts': ['webpack', 'coverage']
 		},
 		webpack: {
 			// karma watches the test entry points
@@ -28,7 +28,10 @@ module.exports = function(config) {
 			}
 			// webpack configuration
 		},
-
+		coverageReporter: {
+			type: 'lcov',
+			dir: 'coverage/'
+		},
 		webpackMiddleware: {
 			// webpack-dev-middleware configuration
 			// i. e.
@@ -37,13 +40,13 @@ module.exports = function(config) {
 		mime: {
 			'text/x-typescript': ['ts', 'tsx']
 		},
-		reporters: ['progress'],
+		reporters: ['progress', 'coverage'],
 		port: 9876,
 		colors: true,
 		logLevel: config.LOG_INFO,
 		autoWatch: true,
-		browsers: ['Chrome'],
-		singleRun: false,
+		browsers: ['PhantomJS'],
+		singleRun: true,
 		concurrency: Infinity
 	});
 };
