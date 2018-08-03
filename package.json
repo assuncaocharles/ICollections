@@ -3,6 +3,11 @@
 	"version": "3.0.1",
 	"description": "",
 	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"files": [
+		"lib/",
+		"src/"
+	],
 	"scripts": {
 		"prepare": "npm run build",
 		"test": "karma start ./karma.conf.js",
@@ -14,7 +19,7 @@
 		"url": "git+https://github.com/assuncaocharles/javascript_DataStructure.git"
 	},
 	"author": "Charles Assunção",
-	"license": "ISC",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/assuncaocharles/javascript_DataStructure/issues"
 	},
