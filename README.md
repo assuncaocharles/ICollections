@@ -2,7 +2,6 @@
 
 # ICollections
 
-
 [![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/) [![Build Status](https://travis-ci.com/assuncaocharles/ICollections.svg?branch=master)](https://travis-ci.com/assuncaocharles/ICollections) [![codecov](https://codecov.io/gh/assuncaocharles/icollections/branch/master/graph/badge.svg)](https://codecov.io/gh/assuncaocharles/icollections) [![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/ICollections.svg)](https://greenkeeper.io/)
 
 > “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.” — Linus Torvalds
@@ -80,6 +79,22 @@ Your actual tree state:
   2    12    133
             /
            42
+```
+
+```javascript
+bst.invert())
+```
+
+Your actual tree state:
+
+```
+        10
+       /  \
+     13    5
+    /  \    \
+  133  12    2
+    \
+     42
 ```
 
 ```javascript
