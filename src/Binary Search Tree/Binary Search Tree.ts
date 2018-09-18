@@ -236,4 +236,19 @@ export class BST<T> {
 			return result;
 		}
 	}
+
+	invert(): void {
+		function invert(node: Node<T>) {
+			if (!node.left && !node.right) {
+				return;
+			}
+			invert(node.left);
+			invert(node.right);
+
+			const tempNode = node.right;
+			node.right = node.left;
+			node.left = tempNode;
+		}
+		invert(this.root);
+	}
 }

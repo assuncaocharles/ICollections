@@ -99,4 +99,16 @@ describe('Binary Search Tree', function() {
 		bst.add(12);
 		expect(bst.layers()).toEqual([10, 5, 13, 2, 12, 133, 42]);
 	});
+
+	it('Should invert the tree', () => {
+		bst.add(10);
+		bst.add(15);
+		bst.add(5);
+		bst.add(4);
+		bst.add(6);
+
+		bst.invert();
+
+		expect(bst.preOrder()).toEqual([10, 15, 5, 6, 4]);
+	});
 });
