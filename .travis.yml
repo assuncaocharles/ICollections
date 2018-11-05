@@ -1,31 +1,33 @@
 language: nodejs
 before_script:
-- npm install codecov -g
-- npm install
-- npm run test
-- npm run build
+    - nvm install 10.13.0
+    - nvm use 10.13.0
+    - npm install codecov -g
+    - npm install
+    - npm run test
+    - npm run build
 script:
-- npm run build
+    - npm run build
 after_success:
-- npm run typedoc
-- npm pack
-- codecov -t "$CODECOV"
+    - npm run typedoc
+    - npm pack
+    - codecov -t "$CODECOV"
 deploy:
-- provider: pages
-  skip_cleanup: true
-  local_dir: docs/
-  github_token: "$GITHUB_TOKEN"
-  on:
-    tags: true
-- provider: releases
-  api_key: "$GITHUB_TOKEN"
-  file_glob: true
-  skip_cleanup: true
-  on:
-    tags: true
-- provider: npm
-  skip_cleanup: true
-  email: junioassuncaocharles@gmail.com
-  api_key: "$NPM_TOKEN"
-  on:
-    tags: true
+    - provider: pages
+      skip_cleanup: true
+      local_dir: docs/
+      github_token: '$GITHUB_TOKEN'
+      on:
+          tags: true
+    - provider: releases
+      api_key: '$GITHUB_TOKEN'
+      file_glob: true
+      skip_cleanup: true
+      on:
+          tags: true
+    - provider: npm
+      skip_cleanup: true
+      email: junioassuncaocharles@gmail.com
+      api_key: '$NPM_TOKEN'
+      on:
+          tags: true
