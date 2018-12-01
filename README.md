@@ -6,7 +6,7 @@
 
 > “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.” — Linus Torvalds
 
-This project has javascript implementation for some comum data structures like:
+This project has javascript implementation for some common data structures like:
 
 -   Linked List
 -   Queue
