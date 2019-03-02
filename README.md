@@ -1,5 +1,3 @@
-![Data Structures](https://raw.githubusercontent.com/assuncaocharles/javascript_DataStructure/master/logo.png 'Data Structures')
-
 # ICollections
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/) [![Build Status](https://travis-ci.com/assuncaocharles/ICollections.svg?branch=master)](https://travis-ci.com/assuncaocharles/ICollections) [![codecov](https://codecov.io/gh/assuncaocharles/icollections/branch/master/graph/badge.svg)](https://codecov.io/gh/assuncaocharles/icollections) [![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/ICollections.svg)](https://greenkeeper.io/)
