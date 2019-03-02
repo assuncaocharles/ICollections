@@ -40,7 +40,9 @@
 		"hash table"
 	],
 	"homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
-	"dependencies": {},
+	"dependencies": {
+		"lodash": "^4.17.11"
+	},
 	"devDependencies": {
 		"@types/jasmine": "^3.0.0",
 		"awesome-typescript-loader": "^5.2.1",
