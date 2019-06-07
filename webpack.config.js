@@ -2,7 +2,7 @@ module.exports = {
 	mode: 'development',
 	entry: './src/index.ts',
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js']
+		extensions: ['.ts', '.js']
 	},
 	output: {
 		path: __dirname + '/lib',
@@ -11,7 +11,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.tsx?$/,
+				test: /\.ts?$/,
 				loader: 'awesome-typescript-loader'
 			}
 		]

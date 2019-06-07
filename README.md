@@ -102,6 +102,11 @@ console.log(bst.inOrder()); //[2,5,10,12,13,42,133]
 console.log(bst.preOrder()); //[10,5,2,13,12,133,42]
 console.log(bst.postOrder()); //[2,5,12,42,133,13,10]
 console.log(bst.layers()); //[10, 5, 13, 2, 12, 133, 42]
+console.log(bst.elementDepth(10)); // 0
+console.log(bst.elementDepth(42)); // 3
+console.log(bst.elementHeight(10)); // 3
+console.log(bst.elementHeight(42)); // 0
+console.log(bst.layers()); //[10, 5, 13, 2, 12, 133, 42]
 ```
 
 | Algorithm | Average  | Worst Case |

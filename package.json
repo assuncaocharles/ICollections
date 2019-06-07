@@ -1,6 +1,6 @@
 {
 	"name": "icollections",
-	"version": "3.0.5",
+	"version": "3.0.6",
 	"description": "Typescript Data Structures",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
@@ -9,10 +9,10 @@
 		"src/"
 	],
 	"scripts": {
-		"prepare": "npm run build",
-		"test": "karma start ./karma.conf.js",
+		"prepare": "npm run build && cp ./README.md ./package.json ./lib",
+		"test": "karma start ./karma.conf.js --auto-watch",
 		"typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/",
-		"build": "webpack --config webpack.config.js"
+		"build": "tsc"
 	},
 	"repository": {
 		"type": "git",

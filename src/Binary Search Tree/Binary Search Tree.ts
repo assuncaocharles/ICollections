@@ -7,7 +7,7 @@ export class Node<T> {
 }
 
 export class BST<T> {
-	constructor(private root: Node<T> = null) {}
+	constructor(public root: Node<T> = null) {}
 	add(data: T): void {
 		if (this.root === null) {
 			this.root = new Node(data);
@@ -250,5 +250,30 @@ export class BST<T> {
 			node.left = tempNode;
 		}
 		invert(this.root);
+	}
+
+	elementHeight(data: T): number {
+		function findHeight(data: T, tree: Node<T>, height = -1): number {
+			if (!tree) {
+				return height;
+			}
+			const tempHeight = tree.data === data || height >= 0 ? height + 1 : height;
+
+			return Math.max(findHeight(data, tree.left, tempHeight), findHeight(data, tree.right, tempHeight));
+		}
+		return findHeight(data, this.root);
+	}
+
+	elementDepth(data: T): number {
+		function findDepth(data: T, tree: Node<T>, depth = 0): number {
+			if (!tree) {
+				return -1;
+			}
+			if (data === tree.data) {
+				return depth;
+			}
+			return Math.max(findDepth(data, tree.left, depth + 1), findDepth(data, tree.right, depth + 1));
+		}
+		return findDepth(data, this.root);
 	}
 }

@@ -111,4 +111,56 @@ describe('Binary Search Tree', function() {
 
 		expect(bst.preOrder()).toEqual([10, 15, 5, 6, 4]);
 	});
+
+	it('Should find the height of a element', () => {
+		bst.add(10);
+		bst.add(15);
+		bst.add(20);
+		bst.add(21);
+		bst.add(22);
+		bst.add(23);
+		bst.add(5);
+		bst.add(3);
+		bst.add(1);
+
+		expect(bst.elementHeight(1)).toBe(0);
+		expect(bst.elementHeight(3)).toBe(1);
+		expect(bst.elementHeight(10)).toBe(5);
+	});
+
+	it('Should return -1 if the element does not exist', () => {
+		bst.add(10);
+		bst.add(15);
+		bst.add(5);
+		bst.add(3);
+		bst.add(1);
+
+		expect(bst.elementHeight(1001)).toBe(-1);
+		expect(bst.elementHeight(3123)).toBe(-1);
+		expect(bst.elementHeight(1110)).toBe(-1);
+	});
+
+	it('Should find the element depth', () => {
+		bst.add(10);
+		bst.add(15);
+		bst.add(5);
+		bst.add(3);
+		bst.add(1);
+
+		expect(bst.elementDepth(10)).toBe(0);
+		expect(bst.elementDepth(15)).toBe(1);
+		expect(bst.elementDepth(1)).toBe(3);
+	});
+
+	it('Should return -1 when the element does not exist', () => {
+		bst.add(10);
+		bst.add(15);
+		bst.add(5);
+		bst.add(3);
+		bst.add(1);
+
+		expect(bst.elementDepth(10123)).toBe(-1);
+		expect(bst.elementDepth(11235)).toBe(-1);
+		expect(bst.elementDepth(11)).toBe(-1);
+	});
 });
