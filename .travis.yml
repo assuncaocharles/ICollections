@@ -5,13 +5,15 @@ before_script:
     - npm install codecov -g
     - npm install
     - npm run test
-    - npm run build
 script:
     - npm run build
 after_success:
     - npm run typedoc
     - npm pack
     - codecov -t "$CODECOV"
+    - cp ./README.md ./package.json ./lib
+    - cd lib
+    - npm patch
 deploy:
     - provider: pages
       skip_cleanup: true
