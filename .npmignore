@@ -2,11 +2,12 @@
 .prettierrc
 .travis.yml
 
-karma.conf.js
+
 logo.png
-README.md
+
 tsconfig.json
 tsconfig.prod.json
-webpack.config.js
+
 
 docs/
+src/
