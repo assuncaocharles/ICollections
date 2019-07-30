@@ -1,62 +1,50 @@
 {
-	"name": "icollections",
-	"version": "3.0.7",
-	"description": "Typescript Data Structures",
-	"main": "lib/index.js",
-	"types": "lib/index.d.ts",
-	"files": [
-		"lib/",
-		"src/"
-	],
-	"scripts": {
-		"prepare": "npm version patch && npm run build && cp ./README.md ./package.json ./lib",
-		"test": "karma start ./karma.conf.js --auto-watch",
-		"typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/",
-		"build": "tsc"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/assuncaocharles/javascript_DataStructure.git"
-	},
-	"author": "Charles Assunção",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/assuncaocharles/javascript_DataStructure/issues"
-	},
-	"keywords": [
-		"data structures",
-		"collections",
-		"generic",
-		"stack",
-		"linked",
-		"linked list",
-		"map",
-		"queue",
-		"tree",
-		"binary tree",
-		"priority queue",
-		"set",
-		"hash",
-		"hash table"
-	],
-	"homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
-	"dependencies": {
-		"lodash": "^4.17.11"
-	},
-	"devDependencies": {
-		"@types/jasmine": "^3.0.0",
-		"awesome-typescript-loader": "^5.2.1",
-		"hoek": "^6.1.2",
-		"jasmine-core": "^3.3.0",
-		"karma": "^4.1.0",
-		"karma-chrome-launcher": "^2.2.0",
-		"karma-coverage": "^1.1.2",
-		"karma-jasmine": "^2.0.1",
-		"karma-phantomjs-launcher": "^1.0.4",
-		"karma-webpack": "^3.0.5",
-		"typedoc": "^0.12.0",
-		"typescript": "^3.1.6",
-		"webpack": "^4.25.1",
-		"webpack-cli": "^3.1.2"
-	}
+  "name": "icollections",
+  "version": "3.0.7",
+  "description": "Typescript Data Structures",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/",
+    "src/"
+  ],
+  "scripts": {
+    "prepare": "npm version patch && npm run build && cp ./README.md ./package.json ./lib",
+    "test": "jest",
+    "typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/assuncaocharles/javascript_DataStructure.git"
+  },
+  "author": "Charles Assunção",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/assuncaocharles/javascript_DataStructure/issues"
+  },
+  "keywords": [
+    "data structures",
+    "collections",
+    "generic",
+    "stack",
+    "linked",
+    "linked list",
+    "map",
+    "queue",
+    "tree",
+    "binary tree",
+    "priority queue",
+    "set",
+    "hash",
+    "hash table"
+  ],
+  "homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.16",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typedoc": "^0.15.0",
+    "typescript": "^3.5.3"
+  }
 }
