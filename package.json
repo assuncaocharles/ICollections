@@ -9,7 +9,7 @@
 		"src/"
 	],
 	"scripts": {
-		"prepare": "npm version patch && npm run build && cp ./README.md ./package.json ./lib",
+		"prepare": "npm run build && cp ./README.md ./package.json ./lib",
 		"test": "jest",
 		"typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/",
 		"build": "tsc"
