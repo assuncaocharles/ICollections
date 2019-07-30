@@ -1,6 +1,6 @@
 {
 	"name": "icollections",
-	"version": "3.0.13",
+	"version": "3.0.14",
 	"description": "Typescript Data Structures",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
