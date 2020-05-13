@@ -40,7 +40,7 @@
 	],
 	"homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
 	"devDependencies": {
-		"@types/jest": "^24.0.16",
+		"@types/jest": "^25.1.0",
 		"jest": "^24.8.0",
 		"ts-jest": "^24.0.2",
 		"typedoc": "^0.16.0",
