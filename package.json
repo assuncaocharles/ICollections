@@ -43,7 +43,7 @@
 		"@types/jest": "^25.1.0",
 		"jest": "^24.8.0",
 		"ts-jest": "^24.0.2",
-		"typedoc": "^0.16.0",
+		"typedoc": "^0.17.7",
 		"typescript": "^3.5.3"
 	},
 	"dependencies": {}
