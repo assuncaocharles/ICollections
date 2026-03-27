@@ -46,5 +46,8 @@
 		"typedoc": "^0.17.7",
 		"typescript": "^3.5.3"
 	},
-	"dependencies": {}
+	"dependencies": {},
+	"engines": {
+		"node": ">=22"
+	}
 }
