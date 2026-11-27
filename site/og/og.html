@@ -1,0 +1,352 @@
+<!doctype html>
+<!-- Source for site/public/og.png (1200x630), the link preview image. Regenerate with: npm run og -->
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>ICollections social card</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block"
+		/>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+			}
+
+			html,
+			body {
+				width: 1200px;
+				height: 630px;
+			}
+
+			body {
+				position: relative;
+				overflow: hidden;
+				background: #070b0d;
+				color: #eef3f2;
+				font-family: 'Inter', system-ui, sans-serif;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			/* Background: two glows and a fine grid that fades out */
+			.glow-a,
+			.glow-b {
+				position: absolute;
+				border-radius: 50%;
+				filter: blur(100px);
+			}
+
+			.glow-a {
+				width: 680px;
+				height: 680px;
+				left: -220px;
+				top: -320px;
+				background: #0f766e;
+				opacity: 0.7;
+			}
+
+			.glow-b {
+				width: 560px;
+				height: 560px;
+				right: -140px;
+				bottom: -320px;
+				background: #6366f1;
+				opacity: 0.4;
+			}
+
+			.grid {
+				position: absolute;
+				inset: 0;
+				background-image:
+					linear-gradient(rgb(255 255 255 / 5%) 1px, transparent 1px),
+					linear-gradient(90deg, rgb(255 255 255 / 5%) 1px, transparent 1px);
+				background-size: 40px 40px;
+				mask-image: radial-gradient(ellipse 80% 75% at 30% 40%, #000 30%, transparent 80%);
+			}
+
+			.content {
+				position: relative;
+				display: grid;
+				grid-template-columns: 1fr 470px;
+				gap: 40px;
+				height: 100%;
+				padding: 64px 64px 56px 72px;
+			}
+
+			.left {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.brand {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				font-weight: 700;
+				font-size: 26px;
+				letter-spacing: -0.01em;
+			}
+
+			.brand svg {
+				width: 44px;
+				height: 44px;
+			}
+
+			h1 {
+				margin-top: 52px;
+				font-size: 62px;
+				line-height: 1.04;
+				font-weight: 800;
+				letter-spacing: -0.04em;
+			}
+
+			h1 em {
+				font-style: normal;
+				background: linear-gradient(90deg, #2dd4bf, #818cf8);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
+
+			.lead {
+				margin-top: 22px;
+				font-size: 23px;
+				line-height: 1.45;
+				color: #a7b5b3;
+				max-width: 560px;
+			}
+
+			.chips {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-top: auto;
+				max-width: 600px;
+			}
+
+			.chip {
+				font:
+					600 15px/1 'JetBrains Mono',
+					monospace;
+				color: #b8f3ea;
+				background: rgb(45 212 191 / 10%);
+				border: 1px solid rgb(45 212 191 / 28%);
+				border-radius: 8px;
+				padding: 8px 11px;
+			}
+
+			/* Right: a search through a binary search tree */
+			.card {
+				align-self: center;
+				background: rgb(14 21 24 / 82%);
+				border: 1px solid rgb(255 255 255 / 10%);
+				border-radius: 20px;
+				box-shadow:
+					0 1px 0 rgb(255 255 255 / 6%) inset,
+					0 24px 60px rgb(0 0 0 / 45%);
+				overflow: hidden;
+			}
+
+			.card-head {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 16px 20px;
+				border-bottom: 1px solid rgb(255 255 255 / 8%);
+				font:
+					600 17px/1 'JetBrains Mono',
+					monospace;
+			}
+
+			.card-head .call {
+				color: #eef3f2;
+			}
+
+			.card-head .call b {
+				color: #2dd4bf;
+				font-weight: 700;
+			}
+
+			.pill {
+				font:
+					600 13px/1 'Inter',
+					sans-serif;
+				color: #4ade80;
+				background: rgb(74 222 128 / 12%);
+				border-radius: 999px;
+				padding: 6px 10px;
+			}
+
+			.tree {
+				display: block;
+				margin: 10px auto 4px;
+			}
+
+			.tree line {
+				stroke: #3a4547;
+				stroke-width: 2.5;
+			}
+
+			.tree line.on {
+				stroke: #2dd4bf;
+				stroke-width: 3.5;
+			}
+
+			.tree circle {
+				fill: #111a1c;
+				stroke: #5b6b6a;
+				stroke-width: 2.5;
+			}
+
+			.tree .visit circle {
+				fill: #0d2f2b;
+				stroke: #2dd4bf;
+				stroke-width: 3;
+			}
+
+			.tree .found circle {
+				fill: #0f3020;
+				stroke: #4ade80;
+				stroke-width: 4;
+			}
+
+			.tree text {
+				font:
+					600 16px 'JetBrains Mono',
+					monospace;
+				fill: #dbe5e3;
+				text-anchor: middle;
+				dominant-baseline: central;
+			}
+
+			.tree .visit text {
+				fill: #5eead4;
+			}
+
+			.tree .found text {
+				fill: #86efac;
+			}
+
+			.card-foot {
+				padding: 14px 20px 18px;
+				font:
+					500 15px/1.5 'JetBrains Mono',
+					monospace;
+				color: #8a9997;
+				border-top: 1px solid rgb(255 255 255 / 8%);
+			}
+
+			.card-foot span {
+				color: #5eead4;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="glow-a"></div>
+		<div class="glow-b"></div>
+		<div class="grid"></div>
+
+		<div class="content">
+			<div class="left">
+				<div class="brand">
+					<svg viewBox="0 0 32 32" aria-hidden="true">
+						<rect width="32" height="32" rx="8" fill="#0f766e" />
+						<path
+							d="M16 10.5 10.5 21M16 10.5 21.5 21"
+							fill="none"
+							stroke="#fff"
+							stroke-width="2.4"
+							stroke-linecap="round"
+						/>
+						<g fill="#fff">
+							<circle cx="16" cy="9.5" r="3.2" />
+							<circle cx="10" cy="22" r="3.2" />
+							<circle cx="22" cy="22" r="3.2" />
+						</g>
+					</svg>
+					ICollections
+				</div>
+				<h1>Data structures you can <em>see</em> working.</h1>
+				<p class="lead">
+					Strictly typed, iterable, zero-dependency collections for TypeScript, with an interactive
+					playground.
+				</p>
+				<div class="chips">
+					<span class="chip">BST</span>
+					<span class="chip">LinkedList</span>
+					<span class="chip">Stack</span>
+					<span class="chip">Queue</span>
+					<span class="chip">PriorityQueue</span>
+					<span class="chip">HashTable</span>
+					<span class="chip">Set</span>
+					<span class="chip">Map</span>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-head">
+					<span class="call">bst.has(<b>65</b>)</span>
+					<span class="pill">true · 4 comparisons</span>
+				</div>
+				<!-- In-order columns, depth rows: the same layout the site uses. -->
+				<svg class="tree" width="430" height="270" viewBox="0 0 430 270" aria-hidden="true">
+					<line x1="215" y1="40" x2="115" y2="105" />
+					<line x1="215" y1="40" x2="315" y2="105" class="on" />
+					<line x1="115" y1="105" x2="55" y2="170" />
+					<line x1="115" y1="105" x2="175" y2="170" />
+					<line x1="315" y1="105" x2="255" y2="170" class="on" />
+					<line x1="315" y1="105" x2="375" y2="170" />
+					<line x1="255" y1="170" x2="295" y2="235" class="on" />
+					<line x1="55" y1="170" x2="25" y2="235" />
+					<line x1="375" y1="170" x2="405" y2="235" />
+
+					<g class="visit">
+						<circle cx="215" cy="40" r="22" />
+						<text x="215" y="40">50</text>
+					</g>
+					<g>
+						<circle cx="115" cy="105" r="22" />
+						<text x="115" y="105">30</text>
+					</g>
+					<g class="visit">
+						<circle cx="315" cy="105" r="22" />
+						<text x="315" y="105">70</text>
+					</g>
+					<g>
+						<circle cx="55" cy="170" r="22" />
+						<text x="55" y="170">20</text>
+					</g>
+					<g>
+						<circle cx="175" cy="170" r="22" />
+						<text x="175" y="170">40</text>
+					</g>
+					<g class="visit">
+						<circle cx="255" cy="170" r="22" />
+						<text x="255" y="170">60</text>
+					</g>
+					<g>
+						<circle cx="375" cy="170" r="22" />
+						<text x="375" y="170">80</text>
+					</g>
+					<g>
+						<circle cx="25" cy="235" r="20" />
+						<text x="25" y="235">10</text>
+					</g>
+					<g class="found">
+						<circle cx="295" cy="235" r="22" />
+						<text x="295" y="235">65</text>
+					</g>
+					<g>
+						<circle cx="405" cy="235" r="20" />
+						<text x="405" y="235">90</text>
+					</g>
+				</svg>
+				<div class="card-foot">
+					50 → <span>70</span> → <span>60</span> → <span>65</span> · found in O(log n)
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -21,6 +21,8 @@ const read = (file) => fs.readFileSync(path.join(here, file), 'utf8');
 const REPO = 'https://github.com/assuncaocharles/ICollections';
 const NPM = 'https://www.npmjs.com/package/icollections';
 const SITE_URL = 'https://assuncaocharles.github.io/ICollections/';
+const OG_IMAGE_ALT =
+	'ICollections: data structures you can see working. A binary search tree where bst.has(65) walks 50, 70, 60 and finds 65 in 4 comparisons.';
 
 // ---------- Helpers ----------
 
@@ -220,6 +222,7 @@ function renderDocs() {
 
 function layout({ file, page, title, description, body, scripts = [] }) {
 	const url = new URL(file === 'index.html' ? '' : file, SITE_URL).href;
+	const image = new URL('og.png', SITE_URL).href;
 	const v = version();
 	const nav = [
 		['home', 'index.html', 'Home'],
@@ -241,6 +244,16 @@ function layout({ file, page, title, description, body, scripts = [] }) {
 <meta property="og:title" content="${escapeHtml(title)}" />
 <meta property="og:description" content="${escapeHtml(description)}" />
 <meta property="og:url" content="${url}" />
+<meta property="og:site_name" content="ICollections" />
+<meta property="og:image" content="${image}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${escapeHtml(title)}" />
+<meta name="twitter:description" content="${escapeHtml(description)}" />
+<meta name="twitter:image" content="${image}" />
+<meta name="twitter:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}" />
 <meta name="theme-color" content="#0f766e" />
 <link rel="icon" href="${FAVICON}" />
 <script>
@@ -348,6 +361,7 @@ async function build() {
 
 	for (const page of pages) fs.writeFileSync(path.join(out, page.file), layout(page));
 	fs.writeFileSync(path.join(out, '.nojekyll'), '');
+	fs.cpSync(path.join(here, 'public'), out, { recursive: true });
 
 	const files = fs.readdirSync(path.join(out, 'assets')).filter((f) => f.endsWith('.js'));
 	const total = files.reduce((sum, f) => sum + fs.statSync(path.join(out, 'assets', f)).size, 0);
@@ -356,6 +370,7 @@ async function build() {
 
 function serve(port = 4173) {
 	const types = {
+		'.png': 'image/png',
 		'.html': 'text/html',
 		'.js': 'text/javascript',
 		'.css': 'text/css',
