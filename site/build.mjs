@@ -222,7 +222,7 @@ function renderDocs() {
 
 function layout({ file, page, title, description, body, scripts = [] }) {
 	const url = new URL(file === 'index.html' ? '' : file, SITE_URL).href;
-	const image = new URL('og.png', SITE_URL).href;
+	const image = new URL('og.jpg', SITE_URL).href;
 	const v = version();
 	const nav = [
 		['home', 'index.html', 'Home'],
@@ -246,6 +246,8 @@ function layout({ file, page, title, description, body, scripts = [] }) {
 <meta property="og:url" content="${url}" />
 <meta property="og:site_name" content="ICollections" />
 <meta property="og:image" content="${image}" />
+<meta property="og:image:secure_url" content="${image}" />
+<meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}" />
@@ -371,6 +373,7 @@ async function build() {
 function serve(port = 4173) {
 	const types = {
 		'.png': 'image/png',
+		'.jpg': 'image/jpeg',
 		'.html': 'text/html',
 		'.js': 'text/javascript',
 		'.css': 'text/css',
