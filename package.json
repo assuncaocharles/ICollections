@@ -1,50 +1,68 @@
 {
 	"name": "icollections",
-	"version": "3.0.16",
-	"description": "Typescript Data Structures",
-	"main": "lib/index.js",
-	"types": "lib/index.d.ts",
+	"version": "4.0.0",
+	"description": "Strictly typed, dependency-free data structures for TypeScript",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"files": [
-		"lib/*",
-		"src/*"
+		"dist",
+		"src",
+		"!src/**/*.test.ts"
 	],
+	"sideEffects": false,
+	"engines": {
+		"node": ">=22.12"
+	},
 	"scripts": {
-		"test": "jest",
-		"typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/",
-		"build": "tsc"
+		"build": "rm -rf dist && tsc -p tsconfig.build.json",
+		"typecheck": "tsc -p tsconfig.json",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"lint:package": "publint --strict",
+		"prepublishOnly": "npm run typecheck && npm test && npm run build && npm run lint:package"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/assuncaocharles/javascript_DataStructure.git"
+		"url": "git+https://github.com/assuncaocharles/icollections.git"
 	},
 	"author": "Charles Assunção",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/assuncaocharles/javascript_DataStructure/issues"
+		"url": "https://github.com/assuncaocharles/icollections/issues"
 	},
+	"homepage": "https://github.com/assuncaocharles/icollections#readme",
 	"keywords": [
 		"data structures",
 		"collections",
 		"generic",
+		"typescript",
 		"stack",
-		"linked",
 		"linked list",
 		"map",
 		"queue",
 		"tree",
-		"binary tree",
+		"binary search tree",
 		"priority queue",
+		"heap",
 		"set",
-		"hash",
 		"hash table"
 	],
-	"homepage": "https://github.com/assuncaocharles/javascript_DataStructure#readme",
 	"devDependencies": {
-		"@types/jest": "^25.1.0",
-		"jest": "^24.8.0",
-		"ts-jest": "^26.1.0",
-		"typedoc": "^0.17.7",
-		"typescript": "^3.5.3"
-	},
-	"dependencies": {}
+		"@vitest/coverage-v8": "^5.1.2",
+		"prettier": "^3.10.1",
+		"publint": "^0.3.25",
+		"typescript": "^7.0.2",
+		"vitest": "^5.1.2"
+	}
 }

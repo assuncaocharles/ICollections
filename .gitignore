@@ -1,15 +1,13 @@
-#dependencies
+# dependencies
 /node_modules/
 
-#local test use
-test.js
-
-
-#production
+# build output
+/dist/
 /lib/
+/docs/
 
-#system files
-.DS_STORE
+# test
+/coverage/
 
-#test
-coverage/
+# system files
+.DS_Store
