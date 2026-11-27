@@ -1,368 +1,257 @@
 # ICollections
 
-[![BCH compliance](https://bettercodehub.com/edge/badge/assuncaocharles/ICollections?branch=master)](https://bettercodehub.com/) [![Build Status](https://travis-ci.com/assuncaocharles/ICollections.svg?branch=master)](https://travis-ci.com/assuncaocharles/ICollections) [![codecov](https://codecov.io/gh/assuncaocharles/icollections/branch/master/graph/badge.svg)](https://codecov.io/gh/assuncaocharles/icollections) [![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/ICollections.svg)](https://greenkeeper.io/)
+[![CI](https://github.com/assuncaocharles/ICollections/actions/workflows/ci.yml/badge.svg)](https://github.com/assuncaocharles/ICollections/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/icollections)](https://www.npmjs.com/package/icollections)
 
-> “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.” — Linus Torvalds
+> “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.” — Linus Torvalds
 
-This project has javascript implementation for some common data structures like:
+Strictly typed, dependency-free data structures for TypeScript and JavaScript:
 
--   Linked List
--   Queue
--   Priority Queue
--   Stack
--   Maps
--   Hash Table
--   Binary Search Tree
--   Set
+- [Binary Search Tree](#binary-search-tree)
+- [Linked List](#linked-list)
+- [Stack](#stack)
+- [Queue](#queue)
+- [Priority Queue](#priority-queue)
+- [Set](#set)
+- [Map](#map)
+- [Hash Table](#hash-table)
+
+Every collection:
+
+- is generic and fully typed, with no `any` in its public API;
+- is iterable, so it works with `for...of`, spread (`[...collection]`) and `Array.from`;
+- accepts an iterable of initial values in its constructor;
+- has `size`, `isEmpty`, `clear()` and (except `Map` and `HashTable`) `toArray()`;
+- returns `undefined` when you read from it while it is empty, instead of throwing.
 
 ## Install
 
+```bash
+npm i icollections
 ```
-$ npm i icollections
-```
+
+The package is ESM-only and requires Node.js 22.12 or later. CommonJS code can still load it with `require('icollections')`, which Node.js supports for ES modules from 22.12.
+
+Upgrading from 3.x? Read the [migration guide](./CHANGELOG.md#400).
 
 ## Usage
 
 ### Binary Search Tree
 
-```javascript
+```ts
 import { BST } from 'icollections';
 
-var bst = new BST();
-console.log(hashTable.storageLimit); // 14
+const bst = new BST([10, 5, 13, 2, 133, 42, 12]);
+//       10
+//      /  \
+//     5    13
+//    /    /  \
+//   2    12   133
+//             /
+//            42
 
-bst.add(10);
-bst.add(5);
-console.log(bst.isPresent(5)); // true
-console.log(bst.isPresent(10)); // true
-console.log(bst.isBalanced()); // false
+bst.has(42); // true
+bst.findMin(); // 2
+bst.findMax(); // 133
+bst.inOrder(); // [2, 5, 10, 12, 13, 42, 133]
+bst.preOrder(); // [10, 5, 2, 13, 12, 133, 42]
+bst.postOrder(); // [2, 5, 12, 42, 133, 13, 10]
+bst.levelOrder(); // [10, 5, 13, 2, 12, 133, 42]
+bst.elementDepth(42); // 3
+bst.elementHeight(10); // 3
+bst.isBalanced(); // false: 42 is two levels deeper than the free slot under 5
+
+bst.add(10); // false: values are unique
+bst.remove(13); // true
 ```
 
-Your actual tree state:
+Values are ordered with `<` and `>` by default. Pass a comparator to store anything else:
 
-```
-    10
-   /
-  5
-```
+```ts
+interface User {
+	name: string;
+	age: number;
+}
 
-```javascript
-bst.add(13);
-```
-
-Your actual tree state:
-
-```
-      10
-     /  \
-    5    13
+const byAge = new BST<User>([], (a, b) => a.age - b.age);
+byAge.add({ name: 'Ana', age: 31 });
+byAge.add({ name: 'Bo', age: 25 });
+byAge.findMin(); // { name: 'Bo', age: 25 }
 ```
 
-```javascript
-console.log(bst.isBalanced()); // true
+`invert()` mirrors the tree. The tree stays searchable afterwards and orders values in reverse:
 
-bst.add(2);
-bst.add(133);
-bst.add(42);
-bst.add(12);
+```ts
+const tree = new BST([10, 5, 13]);
+tree.invert();
+tree.inOrder(); // [13, 10, 5]
+tree.findMin(); // 13: the first value in the new order
 ```
 
-Your actual tree state:
-
-```
-      10
-     /  \
-    5    13
-   /	/  \
-  2    12    133
-            /
-           42
-```
-
-```javascript
-bst.invert())
-```
-
-Your actual tree state:
-
-```
-        10
-       /  \
-     13    5
-    /  \    \
-  133  12    2
-    \
-     42
-```
-
-```javascript
-console.log(bst.findMin()); // 2
-console.log(bst.findMax()); // 133
-console.log(bst.inOrder()); //[2,5,10,12,13,42,133]
-console.log(bst.preOrder()); //[10,5,2,13,12,133,42]
-console.log(bst.postOrder()); //[2,5,12,42,133,13,10]
-console.log(bst.layers()); //[10, 5, 13, 2, 12, 133, 42]
-console.log(bst.elementDepth(10)); // 0
-console.log(bst.elementDepth(42)); // 3
-console.log(bst.elementHeight(10)); // 3
-console.log(bst.elementHeight(42)); // 0
-console.log(bst.layers()); //[10, 5, 13, 2, 12, 133, 42]
-```
-
-| Algorithm | Average  | Worst Case |
+| Operation | Average  | Worst case |
 | --------- | :------: | :--------: |
 | Space     |   O(n)   |    O(n)    |
 | Search    | O(log n) |    O(n)    |
 | Insert    | O(log n) |    O(n)    |
 | Delete    | O(log n) |    O(n)    |
 
-### Linked Lists
+The tree is not self-balancing, so inserting sorted input produces the worst case. All operations are iterative, so even a list-shaped tree cannot overflow the call stack.
 
-```javascript
+### Linked List
+
+```ts
 import { LinkedList } from 'icollections';
 
-var linked = new LinkedList();
-console.log(linked.size); // 0
+const list = new LinkedList([10, 5, 3]);
+list.size; // 3
 
-linked.add(10);
-linked.add(5);
-linked.add(3);
-console.log(linked.size); // 3
+list.addAt(1, 7); // [10, 7, 5, 3]
+list.dataAt(1); // 7
+list.indexOf(7); // 1
 
-linked.addAt(1, 7);
-console.log(linked.dataAt(1)); // 7
-console.log(linked.indexOf(7)); // 1
+list.remove(3); // true
+list.remove(42); // false: nothing removed
+list.dataAt(3); // undefined
+list.removeAt(0); // 10
 
-linked.remove(3);
-
-console.log(linked.dataAt(2)); // -1
-console.log(linked.indexOf(3)); // -1
-
-linked.add(3);
-linked.removeAt(1);
-console.log(linked.dataAt(1)); // 3
-console.log(linked.indexOf(5)); // -1
+[...list]; // [7, 5]
 ```
 
-| Algorithm | Average | Worst Case |
-| --------- | :-----: | :--------: |
-| Space     |  O(n)   |    O(n)    |
-| Search    |  O(n)   |    O(n)    |
-| Insert    |  O(1)   |    O(1)    |
-| Delete    |  O(1)   |    O(1)    |
+`add` (append) is O(1). Index-based operations are O(n). `addAt` and `removeAt` throw a `RangeError` for an index outside the list.
 
 ### Stack
 
-```javascript
+```ts
 import { Stack } from 'icollections';
 
-let stack = new Stack();
-console.log(stack.size); // 0
-
-stack.push(10);
-stack.push(5);
-stack.push(7);
-console.log(stack.size); // 3
-console.log(stack.peek); // 7
-
-stack.pop();
-console.log(stack.size); // 2
-console.log(stack.peek); // 5
+const stack = new Stack<number>();
+stack.push(10, 5, 7);
+stack.peek; // 7
+stack.pop(); // 7
+stack.size; // 2
+[...stack]; // [5, 10]: top to bottom
 ```
-
-| Algorithm | Average | Worst Case |
-| --------- | :-----: | :--------: |
-| Space     |  O(n)   |    O(n)    |
-| Search    |  O(n)   |    O(n)    |
-| Insert    |  O(1)   |    O(1)    |
-| Delete    |  O(1)   |    O(1)    |
 
 ### Queue
 
-```javascript
+```ts
 import { Queue } from 'icollections';
 
-const queue = new Queue();
-console.log(queue.size); // 0
-
-queue.enqueue('a');
-queue.enqueue('b');
-queue.enqueue('c');
-
-console.log(queue.isEmpty); // false
-console.log(queue.size); // 3
-console.log(queue.front); // 'a'
-console.log(queue.dequeue()); // 'a'
-console.log(queue.size); // 2
-console.log(queue.front); // 'b'
+const queue = new Queue(['a', 'b', 'c']);
+queue.front; // 'a'
+queue.dequeue(); // 'a'
+queue.size; // 2
+queue.enqueue('d');
+[...queue]; // ['b', 'c', 'd']
 ```
 
-| Algorithm | Average | Worst Case |
-| --------- | :-----: | :--------: |
-| Space     |  O(n)   |    O(n)    |
-| Search    |  O(n)   |    O(n)    |
-| Insert    |  O(1)   |    O(1)    |
-| Delete    |  O(1)   |    O(1)    |
+`enqueue` and `dequeue` are amortised O(1).
 
 ### Priority Queue
 
-```javascript
+A min-priority queue backed by a binary heap. Lower numbers come out first, and equal priorities come out in insertion order.
+
+```ts
 import { PriorityQueue } from 'icollections';
 
-const queue = new PriorityQueue();
-console.log(queue.size); // 0
+const queue = new PriorityQueue<string>();
+queue.enqueue('I am last one', 4);
+queue.enqueue(['Just the third', 3]); // [value, priority] tuples also work
+queue.enqueue('Almost', 2);
+queue.enqueue('FIRST ONE, WINNER', 1);
 
-queue.enqueue(['I am last one', 4]);
-queue.enqueue(['Just the third', 3]);
-queue.enqueue(['Almost', 2]);
-queue.enqueue(['FIRST ONE, WINNER', 1]);
-
-console.log(queue.front); // ['FIRST ONE, WINNER', 1])
-
-queue.dequeue();
-
-console.log(queue.front); // ['Almost', 2]
+queue.front; // ['FIRST ONE, WINNER', 1]
+queue.dequeue(); // 'FIRST ONE, WINNER'
+queue.front; // ['Almost', 2]
 ```
 
-| Algorithm | Average | Worst Case |
-| --------- | :-----: | :--------: |
-| Space     |  O(n)   |    O(n)    |
-| Search    |  O(n)   |    O(n)    |
-| Insert    |  O(1)   |    O(1)    |
-| Delete    |  O(1)   |    O(1)    |
+| Operation | Complexity |
+| --------- | :--------: |
+| enqueue   |  O(log n)  |
+| dequeue   |  O(log n)  |
+| front     |    O(1)    |
 
 ### Set
 
-```javascript
-	import { Set } from 'icollections';
+```ts
+import { Set } from 'icollections';
 
-    const set = new Set();
-    console.log(set.size) // 0
+const setA = new Set(['a', 'b', 'c']);
+const setB = new Set(['a', 'c', 'z']);
 
-    set.add("a");
-    set.add("b");
-
-    console.log(set.size) // 2
-    console.log(set.has("a") // true
-    console.log(set.has("b")) // true
-    console.log(set.values) // ["a", "b"]
-
-    set.remove("a");
-    console.log(set.size).toBe(1);
-    console.log(set.has("a")) // false
-
-    var setA = new Set();
-    var setB = new Set();
-
-    setA.add("a");
-    setA.add("b");
-    setA.add("c");
-    setB.add("a");
-    setB.add("c");
-    setB.add("z");
-
-    var intersectSet = setA.intersection(setB);
-
-    console.log(intersectSet.size) // 2
-    console.log(intersectSet.values) // ["a", "c"]
-
-    var diffSet = setA.difference(setB);
-
-    console.log(diffSet.size) // 1
-    console.log(diffSet.values) // ["b"]
-
-
-    var setA = new Set();
-    var setB = new Set();
-
-	setA.add("a");
-	setA.add("b");
-	setA.add("c");
-	setA.add("d");
-
-	setB.add("a");
-	setB.add("b");
-
-    console.log(setB.subset(setA)) // true
+setA.add('a'); // false: already present
+setA.union(setB).values; // ['a', 'b', 'c', 'z']
+setA.intersection(setB).values; // ['a', 'c']
+setA.difference(setB).values; // ['b']
+new Set(['a', 'b']).subset(setA); // true
 ```
+
+`intersection`, `difference` and `subset` accept any object with a `has` method, including the built-in `Set`. `union` accepts any iterable.
 
 ### Map
 
-```javascript
+```ts
 import { Map } from 'icollections';
 
-var map = new Map();
-console.log(map.size); // 0
+const map = new Map<string, number>();
+map.set('arms', 2).set('fingers', 10).set('eyes', 2);
+map.size; // 3
+map.get('arms'); // 2
+map.get('tail'); // undefined
+map.values; // [2, 10, 2]
+map.delete('eyes'); // true
 
-map.set('arms', 2);
-map.set('fingers', 10);
-map.set('eyes', 2);
-map.set('belley button', 1);
-
-console.log(map.size); // 4
-
-let obj = { name: 'languange' };
-map.set(obj, 'JavaScript');
-
-console.log(map.has(obj)); // true
-console.log(map.has({ name: 'languange' })); // true
-console.log(map.get(obj)); // 'JavaScript'
-console.log(map.has('arms')); // true
-console.log(map.get('arms')); // 2
-
-console.log(map.values); // [2,10,2,1]
-
-map.delete('eyes');
-console.log(map.has('eyes')); // false
-
-map.clear();
-console.log(map.size); // 0
+const owners = new Map<object, string>();
+const key = { name: 'language' };
+owners.set(key, 'JavaScript');
+owners.has(key); // true
+owners.has({ name: 'language' }); // false: object keys are compared by reference
 ```
 
-### Hash Tables
+The exported `Set` and `Map` shadow the built-in ones in the files that import them. Import them under another name if you need both, for example `import { Map as IMap } from 'icollections'`.
 
-```javascript
+### Hash Table
+
+A hash table with string keys and separate chaining. The constructor argument is the number of buckets (default 32). It does not limit how many entries the table holds.
+
+```ts
 import { HashTable } from 'icollections';
 
-var hashTable = new HashTable(14);
-console.log(hashTable.storageLimit); // 14
+const table = new HashTable<string>(14);
+table.storageLimit; // 14
 
-hashTable.add('beau', 'person');
-
-console.log(hashTable.lookup('beau')); // 'person'
-
-hashTable.remove('beau');
-expect(hashTable.lookup('beau')); // undefined
+table.add('beau', 'person');
+table.lookup('beau'); // 'person'
+table.has('beau'); // true
+table.remove('beau'); // true
+table.lookup('beau'); // undefined
 ```
 
-| Algorithm | Average | Worst Case |
+| Operation | Average | Worst case |
 | --------- | :-----: | :--------: |
 | Space     |  O(n)   |    O(n)    |
 | Search    |  O(1)   |    O(n)    |
 | Insert    |  O(1)   |    O(n)    |
 | Delete    |  O(1)   |    O(n)    |
 
----
+## Contributing
 
-### Contributing
-
-```
-$ git clone https://github.com/assuncaocharles/javascript_DataStructure
-
-cd javascript_DataStructure
-
-npm i
+```bash
+git clone https://github.com/assuncaocharles/ICollections
+cd ICollections
+npm install
 ```
 
-#### Running test
+| Script                  | What it does                                  |
+| ----------------------- | --------------------------------------------- |
+| `npm test`              | Runs the tests with Vitest                    |
+| `npm run test:coverage` | Runs the tests and enforces coverage          |
+| `npm run typecheck`     | Type-checks the sources and tests             |
+| `npm run format`        | Formats the code with Prettier                |
+| `npm run build`         | Compiles to `dist/`                           |
+| `npm run lint:package`  | Checks the built package's metadata (publint) |
 
-```
-npm run test
-```
+## Roadmap
 
----
-
-### To do
-
--   Graph
--   Binary Heap
+- Graph
+- Self-balancing tree (AVL or red-black)
