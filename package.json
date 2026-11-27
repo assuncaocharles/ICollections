@@ -36,12 +36,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/assuncaocharles/icollections.git"
+		"url": "git+https://github.com/assuncaocharles/ICollections.git"
 	},
 	"author": "Charles Assunção",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/assuncaocharles/icollections/issues"
+		"url": "https://github.com/assuncaocharles/ICollections/issues"
 	},
 	"homepage": "https://assuncaocharles.github.io/ICollections/",
 	"keywords": [
