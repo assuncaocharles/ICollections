@@ -11,3 +11,6 @@
 
 # system files
 .DS_Store
+
+# site build
+/site/dist/

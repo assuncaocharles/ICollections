@@ -1,5 +1,6 @@
 import { sameValueZero } from './internal/equality.js';
 
+/** A node of a {@link LinkedList}. */
 export class LinkedListNode<T> {
 	next: LinkedListNode<T> | null = null;
 
@@ -16,6 +17,7 @@ export class LinkedList<T> implements Iterable<T> {
 	#tail: LinkedListNode<T> | null = null;
 	#size = 0;
 
+	/** Creates a list holding `values`, in order. */
 	constructor(values?: Iterable<T>) {
 		if (values) for (const value of values) this.add(value);
 	}
@@ -25,6 +27,7 @@ export class LinkedList<T> implements Iterable<T> {
 		return this.#size;
 	}
 
+	/** Whether the list has no elements. */
 	get isEmpty(): boolean {
 		return this.#size === 0;
 	}
@@ -109,6 +112,7 @@ export class LinkedList<T> implements Iterable<T> {
 		return -1;
 	}
 
+	/** Whether the list holds an element equal to `data`. */
 	has(data: T): boolean {
 		return this.indexOf(data) !== -1;
 	}
@@ -119,15 +123,18 @@ export class LinkedList<T> implements Iterable<T> {
 		return this.#nodeAt(index).data;
 	}
 
+	/** Removes every element. */
 	clear(): void {
 		this.#head = this.#tail = null;
 		this.#size = 0;
 	}
 
+	/** Elements from head to tail. */
 	toArray(): T[] {
 		return [...this];
 	}
 
+	/** Elements from head to tail, produced lazily. */
 	*[Symbol.iterator](): IterableIterator<T> {
 		for (let node = this.#head; node; node = node.next) yield node.data;
 	}

@@ -12,6 +12,7 @@ export interface SetLike<T> {
 export class Set<T> implements Iterable<T>, SetLike<T> {
 	readonly #items: globalThis.Set<T>;
 
+	/** Creates a set holding the unique `values`. */
 	constructor(values?: Iterable<T>) {
 		this.#items = new NativeSet(values);
 	}
@@ -21,6 +22,7 @@ export class Set<T> implements Iterable<T>, SetLike<T> {
 		return this.#items.size;
 	}
 
+	/** Whether the set has no elements. */
 	get isEmpty(): boolean {
 		return this.#items.size === 0;
 	}
@@ -30,6 +32,7 @@ export class Set<T> implements Iterable<T>, SetLike<T> {
 		return [...this.#items];
 	}
 
+	/** Whether the set holds `value`. */
 	has(value: T): boolean {
 		return this.#items.has(value);
 	}
@@ -46,6 +49,7 @@ export class Set<T> implements Iterable<T>, SetLike<T> {
 		return this.#items.delete(value);
 	}
 
+	/** Removes every element. */
 	clear(): void {
 		this.#items.clear();
 	}
@@ -73,10 +77,12 @@ export class Set<T> implements Iterable<T>, SetLike<T> {
 		return true;
 	}
 
+	/** The values, in insertion order. Same as {@link Set.values}. */
 	toArray(): T[] {
 		return this.values;
 	}
 
+	/** The values, in insertion order. */
 	[Symbol.iterator](): IterableIterator<T> {
 		return this.#items.values();
 	}

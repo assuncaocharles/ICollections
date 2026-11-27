@@ -1,7 +1,12 @@
+<!-- site:skip -->
+
 # ICollections
 
-[![CI](https://github.com/assuncaocharles/ICollections/actions/workflows/ci.yml/badge.svg)](https://github.com/assuncaocharles/ICollections/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/icollections)](https://www.npmjs.com/package/icollections)
+
+**[Documentation](https://assuncaocharles.github.io/ICollections/docs.html)** · **[Playground](https://assuncaocharles.github.io/ICollections/playground.html)**
+
+<!-- /site:skip -->
 
 > “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.” — Linus Torvalds
 
@@ -250,6 +255,19 @@ npm install
 | `npm run format`        | Formats the code with Prettier                |
 | `npm run build`         | Compiles to `dist/`                           |
 | `npm run lint:package`  | Checks the built package's metadata (publint) |
+
+### Releases
+
+Every pull request merged into `master` is published to npm automatically. The pull request title decides the version, following [Conventional Commits](https://www.conventionalcommits.org/):
+
+| Pull request title                                                 | Release               |
+| ------------------------------------------------------------------ | --------------------- |
+| `fix: …`, `perf: …`, `revert: …`                                   | Patch (4.0.0 → 4.0.1) |
+| `feat: …`                                                          | Minor (4.0.0 → 4.1.0) |
+| `feat!: …`, or any type with `!`                                   | Major (4.0.0 → 5.0.0) |
+| `docs:`, `chore:`, `ci:`, `test:`, `refactor:`, `style:`, `build:` | None                  |
+
+A `BREAKING CHANGE:` line in the pull request description also makes a major release.
 
 ## Roadmap
 

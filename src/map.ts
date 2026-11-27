@@ -7,6 +7,7 @@ const NativeMap = globalThis.Map;
 export class Map<K, V> implements Iterable<[K, V]> {
 	readonly #entries: globalThis.Map<K, V>;
 
+	/** Creates a map holding `[key, value]` `entries`. */
 	constructor(entries?: Iterable<readonly [K, V]>) {
 		this.#entries = new NativeMap(entries);
 	}
@@ -16,6 +17,7 @@ export class Map<K, V> implements Iterable<[K, V]> {
 		return this.#entries.size;
 	}
 
+	/** Whether the map has no elements. */
 	get isEmpty(): boolean {
 		return this.#entries.size === 0;
 	}
@@ -41,10 +43,12 @@ export class Map<K, V> implements Iterable<[K, V]> {
 		return this;
 	}
 
+	/** Whether the map has an entry for `key`. */
 	has(key: K): boolean {
 		return this.#entries.has(key);
 	}
 
+	/** The value for `key`, or `undefined`. */
 	get(key: K): V | undefined {
 		return this.#entries.get(key);
 	}
@@ -54,10 +58,12 @@ export class Map<K, V> implements Iterable<[K, V]> {
 		return this.#entries.delete(key);
 	}
 
+	/** Removes every element. */
 	clear(): void {
 		this.#entries.clear();
 	}
 
+	/** The `[key, value]` entries, in insertion order. */
 	[Symbol.iterator](): IterableIterator<[K, V]> {
 		return this.#entries.entries();
 	}

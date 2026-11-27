@@ -2,3 +2,5 @@ dist/
 coverage/
 package-lock.json
 *.png
+site/pages/
+site/dist/

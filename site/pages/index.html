@@ -1,0 +1,163 @@
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">TypeScript · zero dependencies · ESM</div>
+    <h1>Data structures you can <em>see</em> working.</h1>
+    <p class="lead">
+      Eight strictly typed collections for TypeScript and JavaScript, from a binary search tree to a hash table.
+      Each one is iterable, fully tested, and has an interactive visualization.
+    </p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="docs.html#install">Get started</a>
+      <a class="button" href="playground.html">{{icon:play}} Open the playground</a>
+    </div>
+    <div class="install">
+      <div class="code-block">
+        <pre><code>{{sh:npm install icollections}}</code></pre>
+        <button class="copy" aria-label="Copy">{{icon:copy}}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tight">
+  <div class="container">
+    <div class="showcase">
+      <figure class="showcase-viz pane">
+        <div class="pane-head">
+          <span class="pane-title">{{icon:tree}} <code class="hero-call">bst.has(<span id="hero-target">…</span>)</code></span>
+          <span class="spacer"></span>
+          <span class="pill pill-muted" id="hero-steps">searching</span>
+        </div>
+        <div class="viz-stage viz-stage-hero" id="hero-tree" aria-live="off"></div>
+        <figcaption class="pane-note" id="hero-caption">Each comparison halves what is left to search.</figcaption>
+      </figure>
+      <div class="code-block showcase-code">
+        <div class="code-title"><span>TypeScript</span></div>
+        <pre><code>{{ts:import { BST, PriorityQueue } from 'icollections';
+
+const bst = new BST([50, 30, 70, 20, 40, 60, 80]);
+bst.has(60);      // true, after 3 comparisons
+bst.inOrder();    // [20, 30, 40, 50, 60, 70, 80]
+bst.findMin();    // 20
+
+// Any type, with a comparator
+const byAge = new BST<User>([], (a, b) => a.age - b.age);
+
+// Lowest priority number first; ties keep their order
+const jobs = new PriorityQueue<string>();
+jobs.enqueue('deploy', 2);
+jobs.enqueue('hotfix', 1);
+jobs.dequeue();   // 'hotfix'
+
+for (const value of bst) console.log(value); // in order}}</code></pre>
+        <button class="copy" aria-label="Copy">{{icon:copy}}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">The collections</div>
+      <h2>Eight structures, one consistent API</h2>
+      <p>
+        Every collection takes initial values in its constructor, works with <code>for...of</code> and spread,
+        and returns <code>undefined</code> instead of throwing when it is empty.
+      </p>
+    </div>
+    <div class="cards">
+      <a class="card" href="playground.html#bst">
+        <span class="card-name">BST</span>
+        <span class="card-desc">Sorted values with O(log n) search. Any type, with a comparator.</span>
+        <span class="card-meta"><code>add</code> <code>has</code> <code>remove</code> <code>inOrder</code></span>
+      </a>
+      <a class="card" href="playground.html#linked-list">
+        <span class="card-name">LinkedList</span>
+        <span class="card-desc">Nodes linked head to tail. O(1) append with a tail pointer.</span>
+        <span class="card-meta"><code>add</code> <code>addAt</code> <code>removeAt</code> <code>indexOf</code></span>
+      </a>
+      <a class="card" href="playground.html#stack">
+        <span class="card-name">Stack</span>
+        <span class="card-desc">Last in, first out. O(1) push and pop.</span>
+        <span class="card-meta"><code>push</code> <code>pop</code> <code>peek</code></span>
+      </a>
+      <a class="card" href="playground.html#queue">
+        <span class="card-name">Queue</span>
+        <span class="card-desc">First in, first out. Amortised O(1) at both ends.</span>
+        <span class="card-meta"><code>enqueue</code> <code>dequeue</code> <code>front</code></span>
+      </a>
+      <a class="card" href="playground.html#priority-queue">
+        <span class="card-name">PriorityQueue</span>
+        <span class="card-desc">A stable binary heap. O(log n) enqueue and dequeue.</span>
+        <span class="card-meta"><code>enqueue</code> <code>dequeue</code> <code>front</code></span>
+      </a>
+      <a class="card" href="playground.html#hash-table">
+        <span class="card-name">HashTable</span>
+        <span class="card-desc">String keys hashed into buckets, with separate chaining.</span>
+        <span class="card-meta"><code>add</code> <code>lookup</code> <code>remove</code></span>
+      </a>
+      <a class="card" href="playground.html#set">
+        <span class="card-name">Set</span>
+        <span class="card-desc">Unique values with union, intersection and difference.</span>
+        <span class="card-meta"><code>union</code> <code>intersection</code> <code>subset</code></span>
+      </a>
+      <a class="card" href="playground.html#map">
+        <span class="card-name">Map</span>
+        <span class="card-desc">Keys of any type, compared by value or by reference.</span>
+        <span class="card-meta"><code>set</code> <code>get</code> <code>delete</code></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Why ICollections</div>
+      <h2>Small, strict and predictable</h2>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">{{icon:shield}}</div>
+        <h3>Strict types</h3>
+        <p>Generic everywhere, no <code>any</code>. Reads from an empty collection are typed <code>T | undefined</code>, so the compiler reminds you to check.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">{{icon:loop}}</div>
+        <h3>Iterable</h3>
+        <p>Use any collection with <code>for...of</code>, spread or <code>Array.from</code>. A tree iterates in order, a stack from the top.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">{{icon:feather}}</div>
+        <h3>Zero dependencies</h3>
+        <p>Tree-shakeable ES modules with no runtime dependencies. Import only what you use.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">{{icon:layers}}</div>
+        <h3>No stack overflows</h3>
+        <p>Every tree operation is iterative, so even a tree built from sorted input cannot overflow the call stack.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">{{icon:check}}</div>
+        <h3>Thoroughly tested</h3>
+        <p>Full line coverage, plus randomized tests that check each structure against a reference implementation.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">{{icon:play}}</div>
+        <h3>Learn by watching</h3>
+        <p>The playground animates every operation step by step and writes the matching code as you go.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta">
+      <h2>See how a hash table spreads its keys</h2>
+      <p>Or how a priority queue breaks ties, or what a tree looks like after <code>invert()</code>. Try it in the playground.</p>
+      <a class="button button-primary" href="playground.html#hash-table">{{icon:play}} Open the playground</a>
+    </div>
+  </div>
+</section>
