@@ -1,0 +1,24 @@
+name: PR title
+
+# Releases are versioned from PR titles (see publish.yml), so every PR title
+# must follow Conventional Commits: feat: / fix: / feat!: / docs: / ...
+on:
+    pull_request:
+        types: [opened, edited, synchronize, reopened]
+
+permissions:
+    contents: read
+
+jobs:
+    check:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - uses: actions/setup-node@v5
+              with:
+                  node-version: 24
+            - name: Check PR title
+              env:
+                  # Passed via env, never interpolated into the script
+                  TITLE: ${{ github.event.pull_request.title }}
+              run: node scripts/release.js check-title "$TITLE"

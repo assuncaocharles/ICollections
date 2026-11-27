@@ -83,4 +83,6 @@ Most code written against 3.x keeps working; the breaking changes are listed bel
 
 - TypeScript 3.5 → 7, Jest 24 → Vitest 5.
 - Removed the unused Karma configuration, the Jest configuration and the Travis CI pipeline. A GitHub Actions workflow now checks formatting, types, tests with coverage thresholds, the build and the package metadata on Node.js 22 and 24.
-- Removed TypeDoc: no release supports TypeScript 7 yet.
+- A documentation site with an interactive playground, deployed to GitHub Pages. Its API reference is generated from the published type declarations.
+- Releases are automated: every pull request merged into `master` publishes to npm with trusted publishing (no npm token). The version bump comes from the pull request title (Conventional Commits).
+- Removed TypeDoc, which does not support TypeScript 7 yet.

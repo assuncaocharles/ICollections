@@ -1,0 +1,72 @@
+# Releases every merge to master whose PR title calls for one:
+#   fix: / perf: / revert:  -> patch     feat: -> minor
+#   feat!: (any type with "!", or "BREAKING CHANGE:" in the PR body) -> major
+#   docs: / chore: / ci: / test: / refactor: / style: / build: -> no release
+#
+# The current version is the highest of the v* git tags and the versions on
+# npm; the "version" in package.json is set at publish time and not committed.
+#
+# Uses npm trusted publishing (OIDC), so no NPM_TOKEN secret is needed.
+# npm side: package settings > Trusted publisher > GitHub Actions,
+# workflow filename "publish.yml".
+name: Publish
+
+on:
+    push:
+        branches: [master]
+    workflow_dispatch: # re-run the release for the latest master commit
+
+permissions:
+    contents: write # create the vX.Y.Z tag and GitHub release
+    id-token: write # npm trusted publishing
+    pull-requests: read # find the PR title for the merged commit
+
+concurrency:
+    group: publish
+    cancel-in-progress: false
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+              with:
+                  fetch-depth: 0 # tags are needed to find the current version
+
+            - uses: actions/setup-node@v5
+              with:
+                  node-version: 24
+                  registry-url: https://registry.npmjs.org
+
+            - name: Decide the next version
+              id: plan
+              env:
+                  GITHUB_TOKEN: ${{ github.token }}
+              run: node scripts/release.js plan
+
+            # Trusted publishing needs npm 11.5.1 or later
+            - if: steps.plan.outputs.release == 'true'
+              run: npm install -g npm@latest
+
+            - if: steps.plan.outputs.release == 'true'
+              run: npm ci
+
+            - if: steps.plan.outputs.release == 'true'
+              run: npm version "${{ steps.plan.outputs.version }}" --no-git-tag-version --allow-same-version
+
+            # prepublishOnly type-checks, tests, builds and lints the package first
+            - if: steps.plan.outputs.release == 'true'
+              run: npm publish --access public
+
+            - name: Create tag and GitHub release
+              if: steps.plan.outputs.release == 'true'
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  VERSION: ${{ steps.plan.outputs.version }}
+                  PREVIOUS_TAG: ${{ steps.plan.outputs.previous_tag }}
+              run: |
+                  args=(--target "$GITHUB_SHA" --title "v$VERSION" --generate-notes)
+                  if [ -n "$PREVIOUS_TAG" ]; then
+                    args+=(--notes-start-tag "$PREVIOUS_TAG")
+                  fi
+                  gh release create "v$VERSION" "${args[@]}"

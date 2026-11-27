@@ -17,6 +17,7 @@ export class PriorityQueue<T> implements Iterable<PriorityEntry<T>> {
 	readonly #heap: HeapNode<T>[] = [];
 	#counter = 0;
 
+	/** Creates a queue holding `[value, priority]` `entries`. */
 	constructor(entries?: Iterable<PriorityEntry<T>>) {
 		if (entries) for (const entry of entries) this.enqueue(entry);
 	}
@@ -26,6 +27,7 @@ export class PriorityQueue<T> implements Iterable<PriorityEntry<T>> {
 		return this.#heap.length;
 	}
 
+	/** Whether the queue has no elements. */
 	get isEmpty(): boolean {
 		return this.#heap.length === 0;
 	}
@@ -60,6 +62,7 @@ export class PriorityQueue<T> implements Iterable<PriorityEntry<T>> {
 		return top.value;
 	}
 
+	/** Removes every element. */
 	clear(): void {
 		this.#heap.length = 0;
 	}

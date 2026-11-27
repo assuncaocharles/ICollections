@@ -6,6 +6,7 @@ export class Queue<T> implements Iterable<T> {
 	/** Index of the front element in `#items`; slots before it are spent. */
 	#head = 0;
 
+	/** Creates a queue holding `values`, the first one at the front. */
 	constructor(values?: Iterable<T>) {
 		if (values) for (const value of values) this.#items.push(value);
 	}
@@ -15,6 +16,7 @@ export class Queue<T> implements Iterable<T> {
 		return this.#items.length - this.#head;
 	}
 
+	/** Whether the queue has no elements. */
 	get isEmpty(): boolean {
 		return this.size === 0;
 	}
@@ -45,6 +47,7 @@ export class Queue<T> implements Iterable<T> {
 		return value;
 	}
 
+	/** Removes every element. */
 	clear(): void {
 		this.#items = [];
 		this.#head = 0;
@@ -55,6 +58,7 @@ export class Queue<T> implements Iterable<T> {
 		return this.#items.slice(this.#head);
 	}
 
+	/** Elements from front to back. */
 	*[Symbol.iterator](): IterableIterator<T> {
 		for (let i = this.#head; i < this.#items.length; i++) yield this.#items[i] as T;
 	}

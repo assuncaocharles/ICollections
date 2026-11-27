@@ -1,5 +1,6 @@
 import { type Comparator, defaultCompare } from './internal/compare.js';
 
+/** A node of a {@link BST}. */
 export class BSTNode<T> {
 	constructor(
 		public data: T,
@@ -20,6 +21,7 @@ export class BST<T> implements Iterable<T> {
 	#size = 0;
 	#compare: Comparator<T>;
 
+	/** Creates a tree holding `values`, ordered by `compare`. */
 	constructor(values?: Iterable<T>, compare: Comparator<T> = defaultCompare) {
 		this.#compare = compare;
 		if (values) for (const value of values) this.add(value);
@@ -39,6 +41,7 @@ export class BST<T> implements Iterable<T> {
 		return this.#size;
 	}
 
+	/** Whether the tree has no elements. */
 	get isEmpty(): boolean {
 		return this.#size === 0;
 	}
@@ -91,6 +94,7 @@ export class BST<T> implements Iterable<T> {
 		return null;
 	}
 
+	/** Whether the tree holds a value equivalent to `data`. */
 	has(data: T): boolean {
 		return this.find(data) !== null;
 	}
@@ -134,6 +138,7 @@ export class BST<T> implements Iterable<T> {
 		return true;
 	}
 
+	/** Removes every element. */
 	clear(): void {
 		this.#root = null;
 		this.#size = 0;
@@ -240,6 +245,7 @@ export class BST<T> implements Iterable<T> {
 		return -1;
 	}
 
+	/** Values in ascending order. Same as {@link BST.inOrder}. */
 	toArray(): T[] {
 		return [...this];
 	}

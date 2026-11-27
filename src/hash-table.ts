@@ -9,10 +9,12 @@ const DEFAULT_STORAGE_LIMIT = 32;
  * but the more entries share a bucket, the closer lookups get to O(n).
  */
 export class HashTable<V> implements Iterable<[string, V]> {
+	/** Number of buckets. Fixed when the table is created. */
 	readonly storageLimit: number;
 	readonly #buckets: (Bucket<V> | undefined)[];
 	#size = 0;
 
+	/** Creates an empty table with `storageLimit` buckets. */
 	constructor(storageLimit: number = DEFAULT_STORAGE_LIMIT) {
 		if (!Number.isInteger(storageLimit) || storageLimit < 1) {
 			throw new RangeError(`storageLimit must be a positive integer, received ${storageLimit}`);
@@ -26,6 +28,7 @@ export class HashTable<V> implements Iterable<[string, V]> {
 		return this.#size;
 	}
 
+	/** Whether the table has no elements. */
 	get isEmpty(): boolean {
 		return this.#size === 0;
 	}
@@ -61,19 +64,23 @@ export class HashTable<V> implements Iterable<[string, V]> {
 		return this.#buckets[this.hash(key)]?.find(([entryKey]) => entryKey === key)?.[1];
 	}
 
+	/** Whether the table has an entry for `key`. */
 	has(key: string): boolean {
 		return this.#buckets[this.hash(key)]?.some(([entryKey]) => entryKey === key) ?? false;
 	}
 
+	/** Removes every element. */
 	clear(): void {
 		this.#buckets.fill(undefined);
 		this.#size = 0;
 	}
 
+	/** All keys, grouped by bucket. */
 	keys(): string[] {
 		return Array.from(this, ([key]) => key);
 	}
 
+	/** All values, grouped by bucket. */
 	values(): V[] {
 		return Array.from(this, ([, value]) => value);
 	}

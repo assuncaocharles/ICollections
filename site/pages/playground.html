@@ -1,0 +1,87 @@
+<div class="pg">
+	<div class="pg-intro">
+		<div>
+			<h1>Playground</h1>
+			<p>
+				Every operation runs on the real library, animated step by step. The code panel records what you did,
+				ready to copy.
+			</p>
+		</div>
+		<div class="field">
+			Speed
+			<div class="segmented" id="speed" role="group" aria-label="Animation speed">
+				<button type="button" data-speed="slow" aria-pressed="false">Slow</button>
+				<button type="button" data-speed="normal" aria-pressed="true">Normal</button>
+				<button type="button" data-speed="fast" aria-pressed="false">Fast</button>
+				<button type="button" data-speed="instant" aria-pressed="false">Instant</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="tabs pg-tabs" role="tablist" id="demo-tabs" aria-label="Collections"></div>
+
+	<section id="demo-panel" role="tabpanel">
+		<div class="pg-toolbar controls" id="controls"></div>
+		<div class="pg-grid">
+			<div class="pane viz-pane">
+				<div class="pane-head">
+					<span class="pane-title" id="viz-title"></span>
+					<span class="spacer"></span>
+					<a class="button button-sm" id="viz-docs" href="docs.html">Docs</a>
+				</div>
+				<p class="viz-summary" id="viz-summary"></p>
+				<div class="viz-stage" id="stage"></div>
+				<div class="output" id="output" hidden></div>
+				<p class="status" id="status" role="status" aria-live="polite"></p>
+				<dl class="stats" id="stats"></dl>
+			</div>
+			<div class="pane code-pane">
+				<div class="pane-head">
+					<span class="pane-title">Code</span>
+					<span class="spacer"></span>
+					<button class="copy" id="copy-code" type="button" aria-label="Copy">{{icon:copy}}</button>
+				</div>
+				<pre class="code-log" id="code-log"><code></code></pre>
+			</div>
+		</div>
+	</section>
+
+	<section id="script-panel" role="tabpanel" hidden>
+		<div class="pg-grid">
+			<div class="pane">
+				<div class="pane-head">
+					<label class="field"
+						>Example
+						<select id="script-example"></select
+					></label>
+					<span class="spacer"></span>
+					<button class="button button-sm button-primary" id="script-run" type="button">
+						{{icon:play}} Run <kbd>Ctrl ↵</kbd>
+					</button>
+				</div>
+				<label class="visually-hidden" for="script">TypeScript code</label>
+				<textarea
+					id="script"
+					class="script-editor"
+					spellcheck="false"
+					autocapitalize="off"
+					autocomplete="off"
+				></textarea>
+				<p class="pane-note">
+					TypeScript runs in your browser. Import from <code>'icollections'</code>, and call
+					<code>show(collection)</code> to draw one.
+				</p>
+			</div>
+			<div class="pg-side">
+				<div class="pane">
+					<div class="pane-head"><span class="pane-title">Visualization</span></div>
+					<div class="script-viz" id="script-viz"></div>
+				</div>
+				<div class="pane">
+					<div class="pane-head"><span class="pane-title">Console</span></div>
+					<div class="console" id="console" role="log" aria-live="polite"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
