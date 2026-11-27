@@ -32,7 +32,8 @@
 		"lint:package": "publint --strict",
 		"prepublishOnly": "npm run typecheck && npm test && npm run build && npm run lint:package",
 		"build:site": "npm run build && node site/build.mjs",
-		"dev:site": "npm run build && node site/build.mjs --serve"
+		"dev:site": "npm run build && node site/build.mjs --serve",
+		"og": "node site/og/render.mjs"
 	},
 	"repository": {
 		"type": "git",
